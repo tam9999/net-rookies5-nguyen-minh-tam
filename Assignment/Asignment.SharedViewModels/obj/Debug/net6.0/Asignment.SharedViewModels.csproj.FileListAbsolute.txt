@@ -1,0 +1,12 @@
+D:\Work\Assignment\Asignment.SharedViewModels\bin\Debug\net6.0\Asignment.SharedViewModels.deps.json
+D:\Work\Assignment\Asignment.SharedViewModels\bin\Debug\net6.0\Asignment.SharedViewModels.dll
+D:\Work\Assignment\Asignment.SharedViewModels\bin\Debug\net6.0\Asignment.SharedViewModels.pdb
+D:\Work\Assignment\Asignment.SharedViewModels\obj\Debug\net6.0\Asignment.SharedViewModels.csproj.AssemblyReference.cache
+D:\Work\Assignment\Asignment.SharedViewModels\obj\Debug\net6.0\Asignment.SharedViewModels.GeneratedMSBuildEditorConfig.editorconfig
+D:\Work\Assignment\Asignment.SharedViewModels\obj\Debug\net6.0\Asignment.SharedViewModels.AssemblyInfoInputs.cache
+D:\Work\Assignment\Asignment.SharedViewModels\obj\Debug\net6.0\Asignment.SharedViewModels.AssemblyInfo.cs
+D:\Work\Assignment\Asignment.SharedViewModels\obj\Debug\net6.0\Asignment.SharedViewModels.csproj.CoreCompileInputs.cache
+D:\Work\Assignment\Asignment.SharedViewModels\obj\Debug\net6.0\Asignment.SharedViewModels.dll
+D:\Work\Assignment\Asignment.SharedViewModels\obj\Debug\net6.0\refint\Asignment.SharedViewModels.dll
+D:\Work\Assignment\Asignment.SharedViewModels\obj\Debug\net6.0\Asignment.SharedViewModels.pdb
+D:\Work\Assignment\Asignment.SharedViewModels\obj\Debug\net6.0\ref\Asignment.SharedViewModels.dll
