@@ -8,13 +8,12 @@ using System.Threading.Tasks;
 
 namespace Assignment.Domain.Entities
 {
-    
+
     public partial class User
     {
         public User()
         {
             RefreshTokens = new HashSet<RefreshToken>();
-            Tasks = new HashSet<Task>();
         }
         [Key]
         public int Id { get; set; }
@@ -27,6 +26,5 @@ namespace Assignment.Domain.Entities
         public bool Active { get; set; }
 
         public virtual ICollection<RefreshToken> RefreshTokens { get; set; }
-        public virtual ICollection<Task> Tasks { get; set; }
     }
 }

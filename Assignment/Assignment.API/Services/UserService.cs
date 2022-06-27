@@ -10,26 +10,25 @@ namespace Assignment.API.Services
 {
     public class UserService : IUserService
     {
-        private readonly ApplicationDbContext tasksDbContext;
+        private readonly ApplicationDbContext onlineshopDbContext;
         private readonly ITokenService tokenService;
 
-        public UserService(ApplicationDbContext tasksDbContext, ITokenService tokenService)
+        public UserService(ApplicationDbContext onlineshopDbContext, ITokenService tokenService)
         {
-            this.tasksDbContext = tasksDbContext;
+            this.onlineshopDbContext = onlineshopDbContext;
             this.tokenService = tokenService;
         }
 
         public async Task<TokenResponse> LoginAsync(LoginRequest loginRequest)
         {
-            var user = tasksDbContext.Users.SingleOrDefault(user => user.Active && user.Email == loginRequest.Email);
+            var user = onlineshopDbContext.Users.SingleOrDefault(user => user.Active && user.Email == loginRequest.Email);
 
             if (user == null)
             {
                 return new TokenResponse
                 {
                     Success = false,
-                    Error = "Email not found",
-                    ErrorCode = "L02"
+                    Error = "Email not found"
                 };
             }
             var passwordHash = PasswordHelper.HashUsingPbkdf2(loginRequest.Password, Convert.FromBase64String(user.PasswordSalt));
@@ -39,8 +38,7 @@ namespace Assignment.API.Services
                 return new TokenResponse
                 {
                     Success = false,
-                    Error = "Invalid Password",
-                    ErrorCode = "L03"
+                    Error = "Invalid Password"
                 };
             }
 
@@ -56,37 +54,36 @@ namespace Assignment.API.Services
 
         public async Task<LogoutResponse> LogoutAsync(int userId)
         {
-            var refreshToken = await tasksDbContext.RefreshTokens.FirstOrDefaultAsync(o => o.UserId == userId);
+            var refreshToken = await onlineshopDbContext.RefreshTokens.FirstOrDefaultAsync(o => o.UserId == userId);
 
             if (refreshToken == null)
             {
                 return new LogoutResponse { Success = true };
             }
 
-            tasksDbContext.RefreshTokens.Remove(refreshToken);
+            onlineshopDbContext.RefreshTokens.Remove(refreshToken);
 
-            var saveResponse = await tasksDbContext.SaveChangesAsync();
+            var saveResponse = await onlineshopDbContext.SaveChangesAsync();
 
             if (saveResponse >= 0)
             {
                 return new LogoutResponse { Success = true };
             }
 
-            return new LogoutResponse { Success = false, Error = "Unable to logout user", ErrorCode = "L04" };
+            return new LogoutResponse { Success = false, Error = "Unable to logout user"};
 
         }
 
         public async Task<SignupResponse> SignupAsync(SignupRequest signupRequest)
         {
-            var existingUser = await tasksDbContext.Users.SingleOrDefaultAsync(user => user.Email == signupRequest.Email);
+            var existingUser = await onlineshopDbContext.Users.SingleOrDefaultAsync(user => user.Email == signupRequest.Email);
 
             if (existingUser != null)
             {
                 return new SignupResponse
                 {
                     Success = false,
-                    Error = "User already exists with the same email",
-                    ErrorCode = "S02"
+                    Error = "User already exists with the same email"
                 };
             }
 
@@ -95,18 +92,16 @@ namespace Assignment.API.Services
                 return new SignupResponse
                 {
                     Success = false,
-                    Error = "Password and confirm password do not match",
-                    ErrorCode = "S03"
+                    Error = "Password and confirm password do not match"
                 };
             }
 
-            if (signupRequest.Password.Length <= 7) // This can be more complicated than only length, you can check on alphanumeric and or special characters
+            if (signupRequest.Password.Length <= 7) 
             {
                 return new SignupResponse
                 {
                     Success = false,
-                    Error = "Password is weak",
-                    ErrorCode = "S04"
+                    Error = "Password is weak"
                 };
             }
 
@@ -121,12 +116,12 @@ namespace Assignment.API.Services
                 FirstName = signupRequest.FirstName,
                 LastName = signupRequest.LastName,
                 Ts = signupRequest.Ts,
-                Active = true // You can save is false and send confirmation email to the user, then once the user confirms the email you can make it true
+                Active = true
             };
 
-            await tasksDbContext.Users.AddAsync(user);
+            await onlineshopDbContext.Users.AddAsync(user);
 
-            var saveResponse = await tasksDbContext.SaveChangesAsync();
+            var saveResponse = await onlineshopDbContext.SaveChangesAsync();
 
             if (saveResponse >= 0)
             {
@@ -136,8 +131,7 @@ namespace Assignment.API.Services
             return new SignupResponse
             {
                 Success = false,
-                Error = "Unable to save the user",
-                ErrorCode = "S05"
+                Error = "Unable to save the user"
             };
 
         }

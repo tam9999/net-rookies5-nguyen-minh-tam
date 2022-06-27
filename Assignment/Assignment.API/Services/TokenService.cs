@@ -11,11 +11,11 @@ namespace Assignment.API.Services
     public class TokenService : ITokenService
     {
 
-        private readonly ApplicationDbContext tasksDbContext;
+        private readonly ApplicationDbContext onlineshopDbContext;
 
-        public TokenService(ApplicationDbContext tasksDbContext)
+        public TokenService(ApplicationDbContext onlineshopDbContext)
         {
-            this.tasksDbContext = tasksDbContext;
+            this.onlineshopDbContext = onlineshopDbContext;
         }
 
         public async Task<Tuple<string, string>> GenerateTokensAsync(int userId)
@@ -23,7 +23,7 @@ namespace Assignment.API.Services
             var accessToken = await TokenHelper.GenerateAccessToken(userId);
             var refreshToken = await TokenHelper.GenerateRefreshToken();
 
-            var userRecord = await tasksDbContext.Users.Include(o => o.RefreshTokens).FirstOrDefaultAsync(e => e.Id == userId);
+            var userRecord = await onlineshopDbContext.Users.Include(o => o.RefreshTokens).FirstOrDefaultAsync(e => e.Id == userId);
 
             if (userRecord == null)
             {
@@ -49,7 +49,7 @@ namespace Assignment.API.Services
 
             });
 
-            await tasksDbContext.SaveChangesAsync();
+            await onlineshopDbContext.SaveChangesAsync();
 
             var token = new Tuple<string, string>(accessToken, refreshToken);
 
@@ -58,7 +58,7 @@ namespace Assignment.API.Services
 
         public async Task<bool> RemoveRefreshTokenAsync(User user)
         {
-            var userRecord = await tasksDbContext.Users.Include(o => o.RefreshTokens).FirstOrDefaultAsync(e => e.Id == user.Id);
+            var userRecord = await onlineshopDbContext.Users.Include(o => o.RefreshTokens).FirstOrDefaultAsync(e => e.Id == user.Id);
 
             if (userRecord == null)
             {
@@ -69,7 +69,7 @@ namespace Assignment.API.Services
             {
                 var currentRefreshToken = userRecord.RefreshTokens.First();
 
-                tasksDbContext.RefreshTokens.Remove(currentRefreshToken);
+                onlineshopDbContext.RefreshTokens.Remove(currentRefreshToken);
             }
 
             return false;
@@ -77,14 +77,13 @@ namespace Assignment.API.Services
 
         public async Task<ValidateRefreshTokenResponse> ValidateRefreshTokenAsync(RefreshTokenRequest refreshTokenRequest)
         {
-            var refreshToken = await tasksDbContext.RefreshTokens.FirstOrDefaultAsync(o => o.UserId == refreshTokenRequest.UserId);
+            var refreshToken = await onlineshopDbContext.RefreshTokens.FirstOrDefaultAsync(o => o.UserId == refreshTokenRequest.UserId);
 
             var response = new ValidateRefreshTokenResponse();
             if (refreshToken == null)
             {
                 response.Success = false;
                 response.Error = "Invalid session or user is already logged out";
-                response.ErrorCode = "R02";
                 return response;
             }
 
@@ -94,7 +93,6 @@ namespace Assignment.API.Services
             {
                 response.Success = false;
                 response.Error = "Invalid refresh token";
-                response.ErrorCode = "R03";
                 return response;
             }
 
@@ -102,7 +100,6 @@ namespace Assignment.API.Services
             {
                 response.Success = false;
                 response.Error = "Refresh token has expired";
-                response.ErrorCode = "R04";
                 return response;
             }
 
