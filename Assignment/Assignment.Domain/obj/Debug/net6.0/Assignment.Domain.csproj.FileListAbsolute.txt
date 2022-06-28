@@ -26,3 +26,17 @@ C:\Users\SPECTRE\Desktop\net-rookies5-nguyen-minh-tam\net-rookies5-nguyen-minh-t
 C:\Users\SPECTRE\Desktop\net-rookies5-nguyen-minh-tam\net-rookies5-nguyen-minh-tam\Assignment\Assignment.Domain\obj\Debug\net6.0\Assignment.Domain.pdb
 C:\Users\SPECTRE\Desktop\net-rookies5-nguyen-minh-tam\net-rookies5-nguyen-minh-tam\Assignment\Assignment.Domain\obj\Debug\net6.0\Assignment.Domain.genruntimeconfig.cache
 C:\Users\SPECTRE\Desktop\net-rookies5-nguyen-minh-tam\net-rookies5-nguyen-minh-tam\Assignment\Assignment.Domain\obj\Debug\net6.0\ref\Assignment.Domain.dll
+C:\Users\SPECTRE\Downloads\net-rookies5-nguyen-minh-tam-main\Assignment\Assignment.Domain\bin\Debug\net6.0\Assignment.Domain.deps.json
+C:\Users\SPECTRE\Downloads\net-rookies5-nguyen-minh-tam-main\Assignment\Assignment.Domain\bin\Debug\net6.0\Assignment.Domain.runtimeconfig.json
+C:\Users\SPECTRE\Downloads\net-rookies5-nguyen-minh-tam-main\Assignment\Assignment.Domain\bin\Debug\net6.0\Assignment.Domain.dll
+C:\Users\SPECTRE\Downloads\net-rookies5-nguyen-minh-tam-main\Assignment\Assignment.Domain\bin\Debug\net6.0\Assignment.Domain.pdb
+C:\Users\SPECTRE\Downloads\net-rookies5-nguyen-minh-tam-main\Assignment\Assignment.Domain\obj\Debug\net6.0\Assignment.Domain.csproj.AssemblyReference.cache
+C:\Users\SPECTRE\Downloads\net-rookies5-nguyen-minh-tam-main\Assignment\Assignment.Domain\obj\Debug\net6.0\Assignment.Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\SPECTRE\Downloads\net-rookies5-nguyen-minh-tam-main\Assignment\Assignment.Domain\obj\Debug\net6.0\Assignment.Domain.AssemblyInfoInputs.cache
+C:\Users\SPECTRE\Downloads\net-rookies5-nguyen-minh-tam-main\Assignment\Assignment.Domain\obj\Debug\net6.0\Assignment.Domain.AssemblyInfo.cs
+C:\Users\SPECTRE\Downloads\net-rookies5-nguyen-minh-tam-main\Assignment\Assignment.Domain\obj\Debug\net6.0\Assignment.Domain.csproj.CoreCompileInputs.cache
+C:\Users\SPECTRE\Downloads\net-rookies5-nguyen-minh-tam-main\Assignment\Assignment.Domain\obj\Debug\net6.0\Assignment.Domain.dll
+C:\Users\SPECTRE\Downloads\net-rookies5-nguyen-minh-tam-main\Assignment\Assignment.Domain\obj\Debug\net6.0\refint\Assignment.Domain.dll
+C:\Users\SPECTRE\Downloads\net-rookies5-nguyen-minh-tam-main\Assignment\Assignment.Domain\obj\Debug\net6.0\Assignment.Domain.pdb
+C:\Users\SPECTRE\Downloads\net-rookies5-nguyen-minh-tam-main\Assignment\Assignment.Domain\obj\Debug\net6.0\Assignment.Domain.genruntimeconfig.cache
+C:\Users\SPECTRE\Downloads\net-rookies5-nguyen-minh-tam-main\Assignment\Assignment.Domain\obj\Debug\net6.0\ref\Assignment.Domain.dll

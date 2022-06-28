@@ -75,9 +75,21 @@ namespace Assignment.Domain.Data
                     .IsRequired()
                     .HasMaxLength(255);
 
-                entity.Property(e => e.Ts)
+                entity.Property(e => e.Phone)
+                   .IsRequired()
+                   .HasMaxLength(11);
+                entity.Property(e => e.Address)
+                    .IsRequired()
+                    .HasMaxLength(255);
+
+                entity.Property(e => e.CreatedDate)
                     .HasColumnType("smalldatetime")
-                    .HasColumnName("TS");
+                    .HasColumnName("CreatedDate");
+
+                entity.Property(e => e.UpdatedDate)
+                   .HasColumnType("smalldatetime")
+                   .HasColumnName("UpdatedDate")
+                   .HasDefaultValue(DateTime.Now);
 
                 entity.ToTable("User");
 

@@ -16,7 +16,11 @@ namespace Assignment.API.Requests
         [Required]
         public string LastName { get; set; }
         [Required]
-        public DateTime Ts { get; set; }
+        public string Phone { get; set; }
+        [Required]
+        public string Address { get; set; }
+        [Required]
+        public DateTime CreatedDate { get; set; }
 
     }
 }

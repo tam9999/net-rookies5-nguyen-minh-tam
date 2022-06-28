@@ -22,7 +22,10 @@ namespace Assignment.Domain.Entities
         public string PasswordSalt { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
-        public DateTime Ts { get; set; }
+        public string Phone { get; set; }
+        public string Address { get; set; }
+        public DateTime CreatedDate { get; set; }
+        public DateTime UpdatedDate { get; set; }
         public bool Active { get; set; }
 
         public virtual ICollection<RefreshToken> RefreshTokens { get; set; }

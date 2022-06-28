@@ -115,7 +115,9 @@ namespace Assignment.API.Services
                 PasswordSalt = Convert.ToBase64String(salt),
                 FirstName = signupRequest.FirstName,
                 LastName = signupRequest.LastName,
-                Ts = signupRequest.Ts,
+                Phone = signupRequest.Phone,
+                Address = signupRequest.Address,
+                CreatedDate = signupRequest.CreatedDate,
                 Active = true
             };
 
