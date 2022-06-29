@@ -55,6 +55,7 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
 
 builder.Services.AddTransient<ITokenService, TokenService>();
 builder.Services.AddTransient<IUserService, UserService>();
+builder.Services.AddTransient<ICategoryService, CategoryService>();
 builder.Services.AddAuthorization();
 var app = builder.Build();
 
