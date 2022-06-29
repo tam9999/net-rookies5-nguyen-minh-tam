@@ -29,5 +29,8 @@ namespace Assignment.Domain.Entities
         public bool Active { get; set; }
 
         public virtual ICollection<RefreshToken> RefreshTokens { get; set; }
+        public virtual Role Role { get; set; }
+        public virtual OrderDetail OrderDetail { get; set; }
+        public virtual List<ProductRating> ProductRatings { get; set; }
     }
 }
