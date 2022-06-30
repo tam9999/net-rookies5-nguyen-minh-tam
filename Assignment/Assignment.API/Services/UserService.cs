@@ -137,5 +137,14 @@ namespace Assignment.API.Services
             };
 
         }
+        //update user config password hash
+        public async Task UpdateUser(User user)
+        {
+            if (onlineshopDbContext != null)
+            {
+                onlineshopDbContext.Users.Update(user);
+                await onlineshopDbContext.SaveChangesAsync();
+            }
+        }
     }
 }

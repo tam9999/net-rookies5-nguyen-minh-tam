@@ -1,6 +1,7 @@
 ﻿using Assignment.API.Interfaces;
 using Assignment.API.Requests;
 using Assignment.API.Responses;
+using Assignment.Domain.Entities;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -108,6 +109,34 @@ namespace Assignment.API.Controllers
             }
 
             return Ok();
+        }
+
+        [Authorize]
+        [HttpPut]
+        [Route("UpdateUser")]
+        public async Task<IActionResult> UpdateProduct([FromBody] User model)
+        {
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    await userService.UpdateUser(model);
+
+                    return Ok();
+                }
+                catch (Exception ex)
+                {
+                    if (ex.GetType().FullName ==
+                             "Microsoft.EntityFrameworkCore.DbUpdateConcurrencyException")
+                    {
+                        return NotFound();
+                    }
+
+                    return BadRequest();
+                }
+            }
+
+            return BadRequest();
         }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using Assignment.API.Requests;
 using Assignment.API.Responses;
+using Assignment.Domain.Entities;
 
 namespace Assignment.API.Interfaces
 {
@@ -8,5 +9,6 @@ namespace Assignment.API.Interfaces
         Task<TokenResponse> LoginAsync(LoginRequest loginRequest);
         Task<SignupResponse> SignupAsync(SignupRequest signupRequest);
         Task<LogoutResponse> LogoutAsync(int userId);
+        Task UpdateUser(User user);
     }
 }
