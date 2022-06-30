@@ -20,10 +20,6 @@ namespace Assignment.CustomersSite.Controllers
         public async Task<IActionResult> Index()
         {
             var categories = _category.GetAllCategory().GetAwaiter().GetResult();
-            //var result = await new HomeModel()
-            //{
-            //    Categories = categories;
-            //}
             _home.Categories = categories;
             return View(_home);
         }
