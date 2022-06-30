@@ -137,14 +137,34 @@ namespace Assignment.API.Services
             };
 
         }
+
         //update user config password hash
-        public async Task UpdateUser(User user)
+        public async Task<string> UpdateUser(UpdateUserRequest request)
         {
-            if (onlineshopDbContext != null)
-            {
-                onlineshopDbContext.Users.Update(user);
-                await onlineshopDbContext.SaveChangesAsync();
-            }
+            //    var user = await onlineshopDbContext.Users.AnyAsync(x => x.Email == request.Email && x.Id != request.Id);
+            //    if (user == true)
+            //    {
+            //        return "Tài khoản đã tồn tại";
+            //    }
+            //    var mail = await onlineshopDbContext.Users.AnyAsync(x => x.Email == request.Email && x.Id != request.Id);
+            //    if (mail == true)
+            //    {
+            //        return "Emai đã tồn tại";
+            //    }
+            //    var usr = await onlineshopDbContext.FindByIdAsync(request.Id.ToString());
+            //    usr.Name = request.UserName;
+            //    usr.Address = request.Address;
+            //    usr.Email = request.Email;
+            //    usr.PhoneNumber = request.PhoneNumber;
+
+
+            //    var result = await onlineshopDbContext.UpdateAsync(usr);
+            //    if (result.Succeeded)
+            //    {
+            //        return "Cap nhat thanh cong";
+            //    }
+            //    return "Cập nhật không thành công";
+            throw new NotImplementedException();
         }
     }
 }

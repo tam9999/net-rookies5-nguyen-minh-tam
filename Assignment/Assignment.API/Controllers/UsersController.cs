@@ -116,27 +116,28 @@ namespace Assignment.API.Controllers
         [Route("UpdateUser")]
         public async Task<IActionResult> UpdateProduct([FromBody] User model)
         {
-            if (ModelState.IsValid)
-            {
-                try
-                {
-                    await userService.UpdateUser(model);
+            //if (ModelState.IsValid)
+            //{
+            //    try
+            //    {
+            //        await userService.UpdateUser(model);
 
-                    return Ok();
-                }
-                catch (Exception ex)
-                {
-                    if (ex.GetType().FullName ==
-                             "Microsoft.EntityFrameworkCore.DbUpdateConcurrencyException")
-                    {
-                        return NotFound();
-                    }
+            //        return Ok();
+            //    }
+            //    catch (Exception ex)
+            //    {
+            //        if (ex.GetType().FullName ==
+            //                 "Microsoft.EntityFrameworkCore.DbUpdateConcurrencyException")
+            //        {
+            //            return NotFound();
+            //        }
 
-                    return BadRequest();
-                }
-            }
+            //        return BadRequest();
+            //    }
+            //}
 
-            return BadRequest();
+            throw new NotImplementedException();
+            //return BadRequest();
         }
     }
 }

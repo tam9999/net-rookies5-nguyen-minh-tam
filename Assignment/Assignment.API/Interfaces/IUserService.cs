@@ -9,6 +9,6 @@ namespace Assignment.API.Interfaces
         Task<TokenResponse> LoginAsync(LoginRequest loginRequest);
         Task<SignupResponse> SignupAsync(SignupRequest signupRequest);
         Task<LogoutResponse> LogoutAsync(int userId);
-        Task UpdateUser(User user);
+        Task<string> UpdateUser(UpdateUserRequest request);
     }
 }

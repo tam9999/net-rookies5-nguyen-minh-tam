@@ -1,32 +1,31 @@
 ﻿using Assignment.CustomersSite.Models;
+using Assignment.CustomersSite.Service;
 using Microsoft.AspNetCore.Mvc;
+using Refit;
 using System.Diagnostics;
 
 namespace Assignment.CustomersSite.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
-
-        public HomeController(ILogger<HomeController> logger)
+        //private readonly ILogger<HomeController> _logger;
+        private readonly ICategory _category;
+        private HomeModel _home;
+        public HomeController()
         {
-            _logger = logger;
+            _category = RestService.For<ICategory>("https://localhost:5445");
+            _home = new HomeModel();
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            return View();
-        }
-
-        public IActionResult Privacy()
-        {
-            return View();
-        }
-
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
-        {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+            var categories = _category.GetAllCategory().GetAwaiter().GetResult();
+            //var result = await new HomeModel()
+            //{
+            //    Categories = categories;
+            //}
+            _home.Categories = categories;
+            return View(_home);
         }
     }
 }
