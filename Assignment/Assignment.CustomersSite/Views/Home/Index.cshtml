@@ -1,7 +1,7 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
 }
-@model HomeModel
+@model HomeViewModel
 
 <!DOCTYPE html>
 <html>
@@ -293,13 +293,12 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     <ul class="nav tabs ">
                         <li class="active"><a href="#tab1" data-toggle="tab">Staples</a></li>
                         <li class=""><a href="#tab2" data-toggle="tab">Snacks</a></li>
-                        <li class=""><a href="#tab3" data-toggle="tab">Fruits & Vegetables</a></li>
+                        <li class=""><a href="#tab3" data-toggle="tab">Fruits & Vegetables</a></li>    
+                        <li class=""><a href="#tab4" data-toggle="tab">Breakfast & Cereal</a></li>
                         @foreach (var item in Model.Categories)
                         {
-                            <li>@item.CategoryName</li>
+                            <li class=""><a href="#" data-toggle="tab">@item.CategoryName</a></li>
                         }
-        
-                        <li class=""><a href="#tab4" data-toggle="tab">Breakfast & Cereal</a></li>
                     </ul>
                 </nav>
                 <div class=" tab-content tab-content-t ">
@@ -794,8 +793,34 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 </div>
             </div>
             <div class=" con-w3l">
+                @foreach(var item in Model.Products)
+                {
                 <div class="col-md-3 pro-1">
-                    <div class="col-m">
+                    <div class="col-m">                      
+                        <a href="#" data-toggle="modal" data-target="#myModal17" class="offer-img">
+                            <img src="images/@item.Image" class="img-responsive" alt="">
+                        </a>
+                        <div class="mid-1">
+                            <div class="women">
+                                <h6><a href="ProductDetail.cshtml">@item.ProductName</a>(500 g)</h6>
+                            </div>
+                            <div class="mid-2">
+                                <p><label>$7.00</label><em class="item_price">@item.Price</em></p>
+                                <div class="block">
+                                    <div class="starbox small ghosting"> </div>
+                                </div>
+                                <div class="clearfix"></div>
+                            </div>
+                            <div class="add add-2">
+                                <button class="btn btn-danger my-cart-btn my-cart-b" data-id="1" data-name="product 1" data-summary="summary 1" data-price="6.00" data-quantity="1" data-image="images/of16.png">Add to Cart</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                }
+                @*
+                <div class="col-md-3 pro-1">
+                    <div class="col-m">                      
                         <a href="#" data-toggle="modal" data-target="#myModal17" class="offer-img">
                             <img src="images/of16.png" class="img-responsive" alt="">
                         </a>
@@ -971,7 +996,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         </div>
                     </div>
                 </div>
-                <div class="clearfix"></div>
+                *@<div class="clearfix"></div>
             </div>
         </div>
     </div>

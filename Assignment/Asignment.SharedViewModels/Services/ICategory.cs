@@ -1,11 +1,11 @@
 ﻿using Assignment.Domain.Entities;
 using Refit;
 
-namespace Assignment.CustomersSite.Service
+namespace Asignment.SharedViewModels.Services
 {
     public interface ICategory
     {
-        [Get("/api/Categories/GetAllCategory")]
+        [Get("/api/Categories/GetAllCategory")] 
         Task<List<Category>> GetAllCategory();
     }
 }

@@ -8,6 +8,7 @@
     ".NETCoreApp,Version=v6.0": {
       "Assignment.CustomersSite/1.0.0": {
         "dependencies": {
+          "Asignment.SharedViewModels": "1.0.0",
           "Assignment.Domain": "1.0.0",
           "Refit": "6.3.2"
         },
@@ -445,6 +446,15 @@
           }
         }
       },
+      "Asignment.SharedViewModels/1.0.0": {
+        "dependencies": {
+          "Assignment.Domain": "1.0.0",
+          "Refit": "6.3.2"
+        },
+        "runtime": {
+          "Asignment.SharedViewModels.dll": {}
+        }
+      },
       "Assignment.Domain/1.0.0": {
         "dependencies": {
           "Microsoft.AspNetCore.Authentication.JwtBearer": "6.0.6",
@@ -777,6 +787,11 @@
       "sha512": "sha512-CeWTdRNfRaSh0pm2gDTJFwVaXfTq6Xwv/sA887iwPTneW7oMtMlpvDIO+U60+3GWTB7Aom6oQwv5VZVUhQRdPQ==",
       "path": "system.windows.extensions/4.7.0",
       "hashPath": "system.windows.extensions.4.7.0.nupkg.sha512"
+    },
+    "Asignment.SharedViewModels/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
     },
     "Assignment.Domain/1.0.0": {
       "type": "project",

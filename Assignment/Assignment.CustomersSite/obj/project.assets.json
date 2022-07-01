@@ -681,6 +681,20 @@
           }
         }
       },
+      "Asignment.SharedViewModels/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "dependencies": {
+          "Assignment.Domain": "1.0.0",
+          "Refit": "6.3.2"
+        },
+        "compile": {
+          "bin/placeholder/Asignment.SharedViewModels.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Asignment.SharedViewModels.dll": {}
+        }
+      },
       "Assignment.Domain/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v6.0",
@@ -2021,6 +2035,11 @@
         "version.txt"
       ]
     },
+    "Asignment.SharedViewModels/1.0.0": {
+      "type": "project",
+      "path": "../Asignment.SharedViewModels/Asignment.SharedViewModels.csproj",
+      "msbuildProject": "../Asignment.SharedViewModels/Asignment.SharedViewModels.csproj"
+    },
     "Assignment.Domain/1.0.0": {
       "type": "project",
       "path": "../Assignment.Domain/Assignment.Domain.csproj",
@@ -2029,6 +2048,7 @@
   },
   "projectFileDependencyGroups": {
     "net6.0": [
+      "Asignment.SharedViewModels >= 1.0.0",
       "Assignment.Domain >= 1.0.0",
       "Refit >= 6.3.2"
     ]
@@ -2060,6 +2080,9 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
+            "C:\\Users\\SPECTRE\\Desktop\\net-rookies5-nguyen-minh-tam\\net-rookies5-nguyen-minh-tam\\Assignment\\Asignment.SharedViewModels\\Asignment.SharedViewModels.csproj": {
+              "projectPath": "C:\\Users\\SPECTRE\\Desktop\\net-rookies5-nguyen-minh-tam\\net-rookies5-nguyen-minh-tam\\Assignment\\Asignment.SharedViewModels\\Asignment.SharedViewModels.csproj"
+            },
             "C:\\Users\\SPECTRE\\Desktop\\net-rookies5-nguyen-minh-tam\\net-rookies5-nguyen-minh-tam\\Assignment\\Assignment.Domain\\Assignment.Domain.csproj": {
               "projectPath": "C:\\Users\\SPECTRE\\Desktop\\net-rookies5-nguyen-minh-tam\\net-rookies5-nguyen-minh-tam\\Assignment\\Assignment.Domain\\Assignment.Domain.csproj"
             }

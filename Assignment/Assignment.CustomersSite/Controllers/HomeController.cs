@@ -1,5 +1,6 @@
-﻿using Assignment.CustomersSite.Models;
-using Assignment.CustomersSite.Service;
+﻿
+using Asignment.SharedViewModels.Services;
+using Asignment.SharedViewModels.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using Refit;
 using System.Diagnostics;
@@ -10,17 +11,21 @@ namespace Assignment.CustomersSite.Controllers
     {
         //private readonly ILogger<HomeController> _logger;
         private readonly ICategory _category;
-        private HomeModel _home;
+        private readonly IProduct _product;
+        private HomeViewModel _home;
         public HomeController()
         {
             _category = RestService.For<ICategory>("https://localhost:5445");
-            _home = new HomeModel();
+            _product = RestService.For<IProduct>("https://localhost:5445");
+            _home = new HomeViewModel();
         }
 
         public async Task<IActionResult> Index()
         {
             var categories = _category.GetAllCategory().GetAwaiter().GetResult();
+            var products = _product.GetAllProduct().GetAwaiter().GetResult();   
             _home.Categories = categories;
+            _home.Products = products;
             return View(_home);
         }
     }
