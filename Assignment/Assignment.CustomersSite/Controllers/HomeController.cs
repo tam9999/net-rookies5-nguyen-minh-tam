@@ -1,9 +1,7 @@
-﻿
-using Asignment.SharedViewModels.Services;
-using Asignment.SharedViewModels.ViewModels;
+﻿using Asignment.CustomersSite.Services;
+using Asignment.CustomersSite.Models;
 using Microsoft.AspNetCore.Mvc;
 using Refit;
-using System.Diagnostics;
 
 namespace Assignment.CustomersSite.Controllers
 {

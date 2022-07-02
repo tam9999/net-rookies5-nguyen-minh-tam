@@ -209,9 +209,8 @@ img.img-head {
 .head-t {
     margin: 1em 0;
 }
-.card li {
-    display: inline-block;
-    position:relative;
+.card li{
+	display:inline-block;
 }
 .card li a{
 	display:inline-block;
