@@ -2039,9 +2039,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\SPECTRE\\Desktop\\net-rookies5-nguyen-minh-tam\\net-rookies5-nguyen-minh-tam\\Assignment\\Asignment.SharedViewModels\\Asignment.SharedViewModels.csproj",
-      "projectName": "Asignment.SharedViewModels",
-      "projectPath": "C:\\Users\\SPECTRE\\Desktop\\net-rookies5-nguyen-minh-tam\\net-rookies5-nguyen-minh-tam\\Assignment\\Asignment.SharedViewModels\\Asignment.SharedViewModels.csproj",
+      "projectUniqueName": "C:\\Users\\SPECTRE\\Desktop\\net-rookies5-nguyen-minh-tam\\net-rookies5-nguyen-minh-tam\\Assignment\\Asignment.SharedViewModels\\Assignment.SharedViewModels.csproj",
+      "projectName": "Assignment.SharedViewModels",
+      "projectPath": "C:\\Users\\SPECTRE\\Desktop\\net-rookies5-nguyen-minh-tam\\net-rookies5-nguyen-minh-tam\\Assignment\\Asignment.SharedViewModels\\Assignment.SharedViewModels.csproj",
       "packagesPath": "C:\\Users\\SPECTRE\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\SPECTRE\\Desktop\\net-rookies5-nguyen-minh-tam\\net-rookies5-nguyen-minh-tam\\Assignment\\Asignment.SharedViewModels\\obj\\",
       "projectStyle": "PackageReference",

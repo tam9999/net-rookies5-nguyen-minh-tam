@@ -1,6 +1,7 @@
 ﻿using Assignment.API.Interfaces;
 using Assignment.Domain.Data;
 using Assignment.Domain.Entities;
+using Assignment.SharedViewModels.ViewModels;
 using Microsoft.EntityFrameworkCore;
 
 namespace Assignment.API.Services
@@ -60,6 +61,33 @@ namespace Assignment.API.Services
                               where c.Id == categoryId
                               select c
                              ).FirstOrDefaultAsync();
+            }
+
+            return null;
+        }
+
+        public async Task<List<CategoryViewModel>> GetCategoryDetail(int? categoryId)
+        {
+            if (db != null)
+            {
+                return await(from c in db.Categories
+                             from p in db.Products
+                             from r in db.ProductRatings
+                             where c.Id == p.CategoryId && c.Id == categoryId
+                             select new CategoryViewModel
+                             {
+                                 Id = c.Id,
+                                 CategoryName = c.CategoryName,
+                                 Description = c.Description,
+                                 ProductId = p.Id,
+                                 ProductName = p.ProductName,
+                                 Image = p.Image,
+                                 Price = p.Price,
+                                 ProductRatingId = p.ProductRatingId,
+                                 Start = r.Start,
+                                 DescriptionProduct = p.Description,
+                                 Qty = p.Qty
+                             }).ToListAsync();
             }
 
             return null;

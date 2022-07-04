@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "EQLX1wPJpABO+T+yxOnHaNunhD+AaLDcZFEzMq8hBBsJ6bkvJ3A3evN43EHwi3hAWvGWWVr5HbRtze7k0Qg6ZA==",
+  "dgSpecHash": "+yvuVemZ7ppsaUhm30glgkRnBof7AVIVTITBQm1qe3hKWfK4BGsPQOsk6uhjXyWs7n3FpidfS6AMdlC316PU0A==",
   "success": true,
-  "projectFilePath": "C:\\Users\\SPECTRE\\Desktop\\net-rookies5-nguyen-minh-tam\\net-rookies5-nguyen-minh-tam\\Assignment\\Asignment.SharedViewModels\\Asignment.SharedViewModels.csproj",
+  "projectFilePath": "C:\\Users\\SPECTRE\\Desktop\\net-rookies5-nguyen-minh-tam\\net-rookies5-nguyen-minh-tam\\Assignment\\Asignment.SharedViewModels\\Assignment.SharedViewModels.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\SPECTRE\\.nuget\\packages\\microsoft.aspnetcore.authentication.jwtbearer\\6.0.6\\microsoft.aspnetcore.authentication.jwtbearer.6.0.6.nupkg.sha512",
     "C:\\Users\\SPECTRE\\.nuget\\packages\\microsoft.csharp\\4.5.0\\microsoft.csharp.4.5.0.nupkg.sha512",

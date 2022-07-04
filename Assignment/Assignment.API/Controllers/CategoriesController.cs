@@ -60,6 +60,33 @@ namespace Assignment.API.Controllers
                 return BadRequest();
             }
         }
+
+        [HttpGet]
+        [Route("GetCategoryDetail")]
+        public async Task<IActionResult> GetCategoryDetail(int? categoryId)
+        {
+            if (categoryId == null)
+            {
+                return BadRequest();
+            }
+
+            try
+            {
+                var catagoryDetail = await categoryService.GetCategoryDetail(categoryId);
+
+                if (catagoryDetail == null)
+                {
+                    return NotFound();
+                }
+
+                return Ok(catagoryDetail);
+            }
+            catch (Exception)
+            {
+                return BadRequest();
+            }
+        }
+
         [HttpPost]
         [Route("AddCategory")]
         public async Task<IActionResult> AddCategory([FromBody] Category model)

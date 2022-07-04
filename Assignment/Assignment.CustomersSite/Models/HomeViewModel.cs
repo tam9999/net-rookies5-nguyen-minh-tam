@@ -1,4 +1,5 @@
-﻿using Assignment.Domain.Entities;
+﻿using Assignment.SharedViewModels.ViewModels;
+using Assignment.Domain.Entities;
 
 namespace Asignment.CustomersSite.Models
 {
@@ -6,5 +7,6 @@ namespace Asignment.CustomersSite.Models
     {
         public List<Category> Categories { get; set; }
         public List<Product> Products { get; set; }
+        public ProductViewModel Product;
     }
 }

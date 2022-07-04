@@ -1,4 +1,5 @@
 ﻿using Assignment.Domain.Entities;
+using Assignment.SharedViewModels.ViewModels;
 
 namespace Assignment.API.Interfaces
 {
@@ -9,5 +10,7 @@ namespace Assignment.API.Interfaces
         Task<int> AddCategory(Category category);
         Task<int> DeleteCategory(int? CategoryId);
         Task UpdateCategory(Category category);
+        Task<List<CategoryViewModel>> GetCategoryDetail(int? categoryId);
+        
     }
 }

@@ -35,6 +35,15 @@ namespace Assignment.API.Controllers
 
         }
 
+        [HttpGet("Top8")]
+        //[AllowAnonymous]
+        public async Task<IActionResult> GetTop8Async()
+        {
+            //var products = _context.Products.ToList();
+            var products = await productService.GetTop8Async();
+            return Ok(products);
+        }
+
         [HttpGet]
         [Route("GetProduct")]
         public async Task<IActionResult> GetProduct(int? productId)
@@ -60,6 +69,59 @@ namespace Assignment.API.Controllers
                 return BadRequest();
             }
         }
+
+        [HttpGet]
+        [Route("GetProductDetail")]
+        public async Task<IActionResult> GetProductDetail(int? productId)
+        {
+            if (productId == null)
+            {
+                return BadRequest();
+            }
+
+            try
+            {
+                var productDetail = await productService.GetProductDetail(productId);
+
+                if (productDetail == null)
+                {
+                    return NotFound();
+                }
+
+                return Ok(productDetail);
+            }
+            catch (Exception)
+            {
+                return BadRequest();
+            }
+        }
+
+        [HttpGet]
+        [Route("SearchByName")]
+        public async Task<IActionResult> SearchByName(string productName)
+        {
+            if (productName == null)
+            {
+                return BadRequest();
+            }
+
+            try
+            {
+                var search = await productService.SearchByName(productName);
+
+                if (search == null)
+                {
+                    return NotFound();
+                }
+
+                return Ok(search);
+            }
+            catch (Exception)
+            {
+                return BadRequest();
+            }
+        }
+
         [HttpPost]
         [Route("AddProduct")]
         public async Task<IActionResult> AddProduct([FromBody] Product model)

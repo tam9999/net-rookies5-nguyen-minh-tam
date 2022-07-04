@@ -1,4 +1,5 @@
 ﻿using Assignment.Domain.Entities;
+using Assignment.SharedViewModels.ViewModels;
 
 namespace Assignment.API.Interfaces
 {
@@ -9,5 +10,8 @@ namespace Assignment.API.Interfaces
         Task<int> AddProduct(Product product);
         Task<int> DeleteProduct(int? productId);
         Task UpdateProduct(Product product);
+        Task<ProductViewModel> GetProductDetail(int? productId);
+        Task<List<SearchProductViewModel>> SearchByName(string productName);
+        Task<List<ProductViewModel>> GetTop8Async();
     }
 }

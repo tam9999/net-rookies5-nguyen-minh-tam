@@ -100,9 +100,7 @@ C:\Users\SPECTRE\Desktop\net-rookies5-nguyen-minh-tam\net-rookies5-nguyen-minh-t
 C:\Users\SPECTRE\Desktop\net-rookies5-nguyen-minh-tam\net-rookies5-nguyen-minh-tam\Assignment\Assignment.CustomersSite\bin\Debug\net6.0\runtimes\win\lib\netstandard2.0\System.Runtime.Caching.dll
 C:\Users\SPECTRE\Desktop\net-rookies5-nguyen-minh-tam\net-rookies5-nguyen-minh-tam\Assignment\Assignment.CustomersSite\bin\Debug\net6.0\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
 C:\Users\SPECTRE\Desktop\net-rookies5-nguyen-minh-tam\net-rookies5-nguyen-minh-tam\Assignment\Assignment.CustomersSite\bin\Debug\net6.0\runtimes\win\lib\netcoreapp3.0\System.Windows.Extensions.dll
-C:\Users\SPECTRE\Desktop\net-rookies5-nguyen-minh-tam\net-rookies5-nguyen-minh-tam\Assignment\Assignment.CustomersSite\bin\Debug\net6.0\Asignment.SharedViewModels.dll
 C:\Users\SPECTRE\Desktop\net-rookies5-nguyen-minh-tam\net-rookies5-nguyen-minh-tam\Assignment\Assignment.CustomersSite\bin\Debug\net6.0\Assignment.Domain.dll
-C:\Users\SPECTRE\Desktop\net-rookies5-nguyen-minh-tam\net-rookies5-nguyen-minh-tam\Assignment\Assignment.CustomersSite\bin\Debug\net6.0\Asignment.SharedViewModels.pdb
 C:\Users\SPECTRE\Desktop\net-rookies5-nguyen-minh-tam\net-rookies5-nguyen-minh-tam\Assignment\Assignment.CustomersSite\bin\Debug\net6.0\Assignment.Domain.pdb
 C:\Users\SPECTRE\Desktop\net-rookies5-nguyen-minh-tam\net-rookies5-nguyen-minh-tam\Assignment\Assignment.CustomersSite\obj\Debug\net6.0\staticwebassets.build.json
 C:\Users\SPECTRE\Desktop\net-rookies5-nguyen-minh-tam\net-rookies5-nguyen-minh-tam\Assignment\Assignment.CustomersSite\obj\Debug\net6.0\staticwebassets.development.json
@@ -115,3 +113,5 @@ C:\Users\SPECTRE\Desktop\net-rookies5-nguyen-minh-tam\net-rookies5-nguyen-minh-t
 C:\Users\SPECTRE\Desktop\net-rookies5-nguyen-minh-tam\net-rookies5-nguyen-minh-tam\Assignment\Assignment.CustomersSite\obj\Debug\net6.0\Assignment.CustomersSite.pdb
 C:\Users\SPECTRE\Desktop\net-rookies5-nguyen-minh-tam\net-rookies5-nguyen-minh-tam\Assignment\Assignment.CustomersSite\obj\Debug\net6.0\Assignment.CustomersSite.genruntimeconfig.cache
 C:\Users\SPECTRE\Desktop\net-rookies5-nguyen-minh-tam\net-rookies5-nguyen-minh-tam\Assignment\Assignment.CustomersSite\obj\Debug\net6.0\ref\Assignment.CustomersSite.dll
+C:\Users\SPECTRE\Desktop\net-rookies5-nguyen-minh-tam\net-rookies5-nguyen-minh-tam\Assignment\Assignment.CustomersSite\bin\Debug\net6.0\Assignment.SharedViewModels.dll
+C:\Users\SPECTRE\Desktop\net-rookies5-nguyen-minh-tam\net-rookies5-nguyen-minh-tam\Assignment\Assignment.CustomersSite\bin\Debug\net6.0\Assignment.SharedViewModels.pdb

@@ -7,11 +7,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Assignment.API", "Assignmen
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Assignment.Domain", "Assignment.Domain\Assignment.Domain.csproj", "{0FE34875-A2DA-4B87-8C55-1F6D54269AA1}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Asignment.SharedViewModels", "Asignment.SharedViewModels\Asignment.SharedViewModels.csproj", "{C27920C9-9205-4153-BCFC-ABDA837BFC35}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Assignment.SharedViewModels", "Asignment.SharedViewModels\Assignment.SharedViewModels.csproj", "{C27920C9-9205-4153-BCFC-ABDA837BFC35}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Assignment.CustomersSite", "Assignment.CustomersSite\Assignment.CustomersSite.csproj", "{C5973DDC-27AF-4201-B8DE-87A71B92EE44}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assignment.AdminSite", "Assignment.AdminSite\Assignment.AdminSite.csproj", "{318C41CD-1E0A-46C9-89B0-7291CB5B8503}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Assignment.AdminSite", "Assignment.AdminSite\Assignment.AdminSite.csproj", "{318C41CD-1E0A-46C9-89B0-7291CB5B8503}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

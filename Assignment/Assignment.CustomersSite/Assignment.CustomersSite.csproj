@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
-    <Nullable>enable</Nullable>
+    <!--<Nullable>enable</Nullable>-->
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
 
@@ -11,7 +11,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Asignment.SharedViewModels\Asignment.SharedViewModels.csproj" />
+    <ProjectReference Include="..\Asignment.SharedViewModels\Assignment.SharedViewModels.csproj" />
     <ProjectReference Include="..\Assignment.Domain\Assignment.Domain.csproj" />
   </ItemGroup>
 
