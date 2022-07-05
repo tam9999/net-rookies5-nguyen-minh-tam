@@ -17,7 +17,7 @@ namespace Assignment.CustomersSite.Controllers
         {
             _category = RestService.For<ICategory>("https://localhost:5445");
             _product = RestService.For<IProduct>("https://localhost:5445");
-            //_productViewModel = RestService.For<IProductViewModel>("https://localhost:5445");
+         //   _productViewModel = RestService.For<IProductViewModel>("https://localhost:5445");
             _home = new HomeViewModel();
         }
 
@@ -25,10 +25,10 @@ namespace Assignment.CustomersSite.Controllers
         {
             var categories = _category.GetAllCategory().GetAwaiter().GetResult();
             var products = _product.GetAllProduct().GetAwaiter().GetResult();
-            //var productViewModel = _productViewModel.GetProduct().GetAwaiter().GetResult();
+        //    var productViewModel = _productViewModel.GetProductDetail().GetAwaiter().GetResult();
             _home.Categories = categories;
             _home.Products = products;
-            //_home.Product = productViewModel;
+        //    _home.ProductDeatil = productViewModel;
             return View(_home);
         }
     }

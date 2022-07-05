@@ -5,7 +5,14 @@ namespace Assignment.CustomersSite.Services
 {
     public interface IProductViewModel
     {
-        [Get("/api/Product/GetProduct")]
-        Task<ProductViewModel> GetProduct();
+        
+        //[Get("api/Product/Top8")]
+        //Task<ProductViewModel> GetTop8Async();
+
+        [Get("/api/Product/GetProductDetail")]
+        Task<ProductViewModel> GetProductDetail();
+
+        //[Get("api/Product/Search/{productName}")]
+        //Task<SearchProductViewModel> SearchByName();
     }
 }

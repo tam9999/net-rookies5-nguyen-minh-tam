@@ -13,6 +13,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Assignment.CustomersSite", 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Assignment.AdminSite", "Assignment.AdminSite\Assignment.AdminSite.csproj", "{318C41CD-1E0A-46C9-89B0-7291CB5B8503}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assignment.CustomerSite", "Assignment.CustomerSite\Assignment.CustomerSite.csproj", "{88352EA4-7644-4C21-970C-3944A8BC0EDE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{318C41CD-1E0A-46C9-89B0-7291CB5B8503}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{318C41CD-1E0A-46C9-89B0-7291CB5B8503}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{318C41CD-1E0A-46C9-89B0-7291CB5B8503}.Release|Any CPU.Build.0 = Release|Any CPU
+		{88352EA4-7644-4C21-970C-3944A8BC0EDE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{88352EA4-7644-4C21-970C-3944A8BC0EDE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{88352EA4-7644-4C21-970C-3944A8BC0EDE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{88352EA4-7644-4C21-970C-3944A8BC0EDE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

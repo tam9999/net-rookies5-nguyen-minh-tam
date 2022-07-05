@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "kqK7N9MuZ09+DN7HMnwWTkSP2nKT8+lFwwMqiGZH9cA=",
+  "Hash": "l3Ib8RbYoAEEK0vvLkPzcP2GK4JxkC1MlmEH/RvwYDY=",
   "Source": "Assignment.CustomersSite",
   "BasePath": "_content/Assignment.CustomersSite",
   "Mode": "Default",
@@ -423,6 +423,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\images\\ba2.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\SPECTRE\\Desktop\\net-rookies5-nguyen-minh-tam\\net-rookies5-nguyen-minh-tam\\Assignment\\Assignment.CustomersSite\\wwwroot\\images\\Banner.jpg",
+      "SourceId": "Assignment.CustomersSite",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\SPECTRE\\Desktop\\net-rookies5-nguyen-minh-tam\\net-rookies5-nguyen-minh-tam\\Assignment\\Assignment.CustomersSite\\wwwroot\\",
+      "BasePath": "_content/Assignment.CustomersSite",
+      "RelativePath": "images/Banner.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\Banner.jpg"
     },
     {
       "Identity": "C:\\Users\\SPECTRE\\Desktop\\net-rookies5-nguyen-minh-tam\\net-rookies5-nguyen-minh-tam\\Assignment\\Assignment.CustomersSite\\wwwroot\\images\\banner1.jpg",
