@@ -3,7 +3,7 @@ using Assignment.SharedViewModels.ViewModels;
 using AutoMapper;
 namespace Assignment.API
 {
-    public class MappingProfile
+    public class MappingProfile : Profile
     {
         public MappingProfile()
         {

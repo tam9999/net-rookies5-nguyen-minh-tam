@@ -205,3 +205,5 @@ C:\Users\SPECTRE\Desktop\net-rookies5-nguyen-minh-tam\net-rookies5-nguyen-minh-t
 C:\Users\SPECTRE\Desktop\net-rookies5-nguyen-minh-tam\net-rookies5-nguyen-minh-tam\Assignment\Assignment.API\bin\Debug\net6.0\Refit.dll
 C:\Users\SPECTRE\Desktop\net-rookies5-nguyen-minh-tam\net-rookies5-nguyen-minh-tam\Assignment\Assignment.API\bin\Debug\net6.0\Assignment.SharedViewModels.dll
 C:\Users\SPECTRE\Desktop\net-rookies5-nguyen-minh-tam\net-rookies5-nguyen-minh-tam\Assignment\Assignment.API\bin\Debug\net6.0\Assignment.SharedViewModels.pdb
+C:\Users\SPECTRE\Desktop\net-rookies5-nguyen-minh-tam\net-rookies5-nguyen-minh-tam\Assignment\Assignment.API\bin\Debug\net6.0\AutoMapper.dll
+C:\Users\SPECTRE\Desktop\net-rookies5-nguyen-minh-tam\net-rookies5-nguyen-minh-tam\Assignment\Assignment.API\bin\Debug\net6.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll

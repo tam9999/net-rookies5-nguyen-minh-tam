@@ -1,5 +1,6 @@
 ﻿using Assignment.API.Interfaces;
 using Assignment.Domain.Entities;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Assignment.API.Controllers
@@ -37,11 +38,26 @@ namespace Assignment.API.Controllers
 
         [HttpGet("Top8")]
         //[AllowAnonymous]
-        public async Task<IActionResult> GetTop8Async()
+        public async Task<IActionResult> GetTop8()
         {
             //var products = _context.Products.ToList();
             var products = await productService.GetTop8Async();
             return Ok(products);
+        }
+
+        [HttpGet("Search/{productName}")]
+        [AllowAnonymous]
+        public async Task<IActionResult> SearchByName([FromRoute] string productName)
+        {
+            try
+            {
+                var data = await productService.SearchByName(productName);
+                return Ok(data);
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }
         }
 
         [HttpGet]
@@ -96,31 +112,6 @@ namespace Assignment.API.Controllers
             }
         }
 
-        [HttpGet]
-        [Route("SearchByName")]
-        public async Task<IActionResult> SearchByName(string productName)
-        {
-            if (productName == null)
-            {
-                return BadRequest();
-            }
-
-            try
-            {
-                var search = await productService.SearchByName(productName);
-
-                if (search == null)
-                {
-                    return NotFound();
-                }
-
-                return Ok(search);
-            }
-            catch (Exception)
-            {
-                return BadRequest();
-            }
-        }
 
         [HttpPost]
         [Route("AddProduct")]

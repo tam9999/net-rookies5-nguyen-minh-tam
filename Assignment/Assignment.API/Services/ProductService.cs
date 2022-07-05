@@ -55,10 +55,7 @@ namespace Assignment.API.Services
             return null;
         }
 
-        public async Task<List<ProductViewModel>> GetTop5Async()
-        {
-            return await db.Products.Select(product => _mapper.Map<ProductViewModel>(product)).Take(5).ToListAsync();
-        }
+        
 
         public async Task<Product> GetProduct(int? productId)
         {
@@ -101,29 +98,18 @@ namespace Assignment.API.Services
 
         public async Task<List<SearchProductViewModel>> SearchByName(string productName)
         {
-            if (db != null)
+            //return await db.Products.Where(x => x.ProductName.Contains(productName)).Select(product => _mapper.Map<SearchProductViewModel>(product)).ToListAsync();
+            return await db.Products.Where(p => p.ProductName.Contains(productName) && p.IsDeleted==true).Select(product => new SearchProductViewModel()
             {
-                return await(from c in db.Categories
-                             from p in db.Products
-                             from r in db.ProductRatings
-                             where p.ProductName == productName
-                             select new SearchProductViewModel
-                             {
-                                 
-                                 Name = p.ProductName,
-                                 Id = p.Id,
-                                 CategoryId = p.CategoryId,
-                                 CategoryName = c.CategoryName,
-                                 Image = p.Image,
-                                 Price = p.Price,
-                                 ProductRatingId = p.ProductRatingId,
-                                 Start = r.Start,
-                                 Description = p.Description,
-                                 Qty = p.Qty
-                             }).ToListAsync();
-            }
-
-            return null;
+                Id = product.Id,
+                Name = product.ProductName,
+                CategoryId = product.CategoryId,
+                Image = product.Image,
+                Price = product.Price,
+                ProductRatingId = product.ProductRatingId,
+                Description = product.Description,
+                Qty = product.Qty,
+            }).ToListAsync();
         }
 
         public async Task UpdateProduct(Product product)
@@ -135,9 +121,9 @@ namespace Assignment.API.Services
             }
         }
 
-        public Task<List<ProductViewModel>> GetTop8Async()
-        {
-            throw new NotImplementedException();
+        public async Task<List<ProductViewModel>> GetTop8Async()
+        {           
+            return await db.Products.Select(product => _mapper.Map<ProductViewModel>(product)).Take(8).ToListAsync();
         }
     }
 }

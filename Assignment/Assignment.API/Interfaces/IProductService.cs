@@ -13,5 +13,6 @@ namespace Assignment.API.Interfaces
         Task<ProductViewModel> GetProductDetail(int? productId);
         Task<List<SearchProductViewModel>> SearchByName(string productName);
         Task<List<ProductViewModel>> GetTop8Async();
+        
     }
 }

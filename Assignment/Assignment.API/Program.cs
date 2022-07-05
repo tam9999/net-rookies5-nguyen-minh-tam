@@ -2,12 +2,13 @@ using Assignment.API.Interfaces;
 using Assignment.API.Services;
 using Assignment.Domain.Data;
 using Assignment.Domain.Helpers;
+using AutoMapper;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using Swashbuckle.AspNetCore.Filters;
-
+using System.Reflection;
 
 var builder = WebApplication.CreateBuilder(args);
 

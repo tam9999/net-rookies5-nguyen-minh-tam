@@ -18,5 +18,6 @@ namespace Assignment.SharedViewModels.ViewModels
         public int Start { get; set; }
         public string Description { get; set; }
         public int Qty { get; set; }
+        public bool IsDeleted { get; set; }
     }
 }
