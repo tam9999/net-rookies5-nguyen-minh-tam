@@ -9,8 +9,8 @@ namespace Assignment.CustomerSite.Services
         //[Get("api/Product/Top8")]
         //Task<ProductViewModel> GetTop8Async();
 
-        [Get("/api/Product/GetProductDetail")]
-        Task<ProductViewModel> GetProductDetail();
+        [Get("/api/Product/GetProductDetail/")]
+        Task<ProductViewModel> GetProductDetail(int productId);
 
         //[Get("api/Product/Search/{productName}")]
         //Task<SearchProductViewModel> SearchByName();

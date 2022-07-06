@@ -8,9 +8,6 @@
 
   <ItemGroup>
     <Folder Include="Pages\Components\Home\" />
-    <Folder Include="Pages\Components\About\" />
-    <Folder Include="Pages\Components\Contact\" />
-    <Folder Include="Pages\Components\Product\" />
   </ItemGroup>
 
   <ItemGroup>

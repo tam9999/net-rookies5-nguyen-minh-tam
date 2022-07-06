@@ -16,6 +16,26 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = C:\Users\SPECTRE\Desktop\net-rookies5-nguyen-minh-tam\net-rookies5-nguyen-minh-tam\Assignment\Assignment.CustomerSite
 build_property._RazorSourceGeneratorDebug = 
 
+[C:/Users/SPECTRE/Desktop/net-rookies5-nguyen-minh-tam/net-rookies5-nguyen-minh-tam/Assignment/Assignment.CustomerSite/Pages/Components/About/About.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ29tcG9uZW50c1xBYm91dFxBYm91dC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/SPECTRE/Desktop/net-rookies5-nguyen-minh-tam/net-rookies5-nguyen-minh-tam/Assignment/Assignment.CustomerSite/Pages/Components/Auth/Login.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ29tcG9uZW50c1xBdXRoXExvZ2luLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/SPECTRE/Desktop/net-rookies5-nguyen-minh-tam/net-rookies5-nguyen-minh-tam/Assignment/Assignment.CustomerSite/Pages/Components/Auth/Register.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ29tcG9uZW50c1xBdXRoXFJlZ2lzdGVyLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/SPECTRE/Desktop/net-rookies5-nguyen-minh-tam/net-rookies5-nguyen-minh-tam/Assignment/Assignment.CustomerSite/Pages/Components/Contact/Contact.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ29tcG9uZW50c1xDb250YWN0XENvbnRhY3QuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/SPECTRE/Desktop/net-rookies5-nguyen-minh-tam/net-rookies5-nguyen-minh-tam/Assignment/Assignment.CustomerSite/Pages/Components/Product/ProductDetail.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ29tcG9uZW50c1xQcm9kdWN0XFByb2R1Y3REZXRhaWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/SPECTRE/Desktop/net-rookies5-nguyen-minh-tam/net-rookies5-nguyen-minh-tam/Assignment/Assignment.CustomerSite/Pages/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRXJyb3IuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
