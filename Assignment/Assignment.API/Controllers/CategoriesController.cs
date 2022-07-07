@@ -1,5 +1,6 @@
 ﻿using Assignment.API.Interfaces;
 using Assignment.Domain.Entities;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Assignment.API.Controllers
@@ -61,8 +62,9 @@ namespace Assignment.API.Controllers
             }
         }
 
-        [HttpGet]
-        [Route("GetCategoryDetail")]
+        [HttpGet("{categoryId}")]
+        [AllowAnonymous]
+        //[Route("GetCategoryDetail")]
         public async Task<IActionResult> GetCategoryDetailAsync(int? categoryId)
         {
             if (categoryId == null)

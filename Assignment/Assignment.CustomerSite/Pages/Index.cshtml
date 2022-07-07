@@ -271,7 +271,7 @@
 							</a>
 							<div class="mid-1">
 								<div class="women">
-									<h6><a asp-page="/Components/Product/ProductDetail" asp-route-productId="@item.Id">@item.ProductName</a></h6>							
+									<h6><a asp-page="/Components/Product/ProductDetail" asp-route-productId="@item.Id">@item.Name</a></h6>							
 								</div>
 								<div class="mid-2">
 									<p><em class="item_price">@String.Format(format, "{0:c0}", @item.Price )</em></p>
@@ -307,7 +307,7 @@
 							</div>
 						</div>
 						<div class="col-md-7 span-1 ">
-							<h3>@item.ProductName</h3>
+							<h3>@item.Name</h3>
 								<br/>
 							<div class="price_single">
 								<span class="reducedfrom ">@String.Format(format, "{0:c0}", @item.Price )</span>

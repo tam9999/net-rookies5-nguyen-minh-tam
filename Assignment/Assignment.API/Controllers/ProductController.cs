@@ -86,8 +86,9 @@ namespace Assignment.API.Controllers
             }
         }
 
-        [HttpGet]
-        [Route("GetProductDetail")]
+        [HttpGet("{productId}")]
+        [AllowAnonymous]
+        //[Route("GetProductDetail")]
         public async Task<IActionResult> GetProductDetail(int? productId)
         {
             if (productId == null)
