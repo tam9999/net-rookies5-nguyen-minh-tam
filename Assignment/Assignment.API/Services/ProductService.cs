@@ -16,7 +16,7 @@ namespace Assignment.API.Services
             this.db = _db;
             _mapper = mapper;
         }
-        public async Task<int> AddProduct(Product product)
+        public async Task<int> AddProductAsync(Product product)
         {
             if (db != null)
             {
@@ -27,7 +27,7 @@ namespace Assignment.API.Services
             return 0;
         }
 
-        public async Task<int> DeleteProduct(int? productId)
+        public async Task<int> DeleteProductAsync(int? productId)
         {
             int result = 0;
 
@@ -46,7 +46,7 @@ namespace Assignment.API.Services
             return result;
         }
 
-        public async Task<List<Product>> GetAllProduct()
+        public async Task<List<Product>> GetAllProductAsync()
         {
             if (db != null)
             {
@@ -55,22 +55,20 @@ namespace Assignment.API.Services
             return null;
         }
 
-        
-
-        public async Task<Product> GetProduct(int? productId)
+        public async Task<Product> GetProductByIdAsync(int? Id)
         {
             if (db != null)
             {
-                return await(from c in db.Products
-                             where c.Id == productId
-                             select c
+                return await(from p in db.Products
+                             where p.Id == Id
+                             select p
                              ).FirstOrDefaultAsync();
             }
 
             return null;
         }
 
-        public async Task<ProductViewModel> GetProductDetail(int? productId)
+        public async Task<ProductViewModel> GetProductDetailAsync(int? productId)
         {
             if (db != null)
             {
@@ -96,7 +94,7 @@ namespace Assignment.API.Services
             return null;
         }
 
-        public async Task<List<SearchProductViewModel>> SearchByName(string productName)
+        public async Task<List<SearchProductViewModel>> SearchByNameAsync(string productName)
         {
             //return await db.Products.Where(x => x.ProductName.Contains(productName)).Select(product => _mapper.Map<SearchProductViewModel>(product)).ToListAsync();
             return await db.Products.Where(p => p.ProductName.Contains(productName) && p.IsDeleted==true).Select(product => new SearchProductViewModel()
@@ -112,7 +110,7 @@ namespace Assignment.API.Services
             }).ToListAsync();
         }
 
-        public async Task UpdateProduct(Product product)
+        public async Task UpdateProductAsync(Product product)
         {
             if (db != null)
             {

@@ -17,11 +17,12 @@ namespace Assignment.API.Controllers
 
         [HttpGet]
         [Route("GetAllProduct")]
-        public async Task<IActionResult> GetAllProduct()
+        //[AllowAnonymous]
+        public async Task<IActionResult> GetAllProductAsync()
         {
             try
             {
-                var product = await productService.GetAllProduct();
+                var product = await productService.GetAllProductAsync();
                 if (product == null)
                 {
                     return NotFound();
@@ -38,7 +39,7 @@ namespace Assignment.API.Controllers
 
         [HttpGet("Top8")]
         //[AllowAnonymous]
-        public async Task<IActionResult> GetTop8()
+        public async Task<IActionResult> GetTop8Async()
         {
             //var products = _context.Products.ToList();
             var products = await productService.GetTop8Async();
@@ -46,12 +47,12 @@ namespace Assignment.API.Controllers
         }
 
         [HttpGet("Search/{productName}")]
-        [AllowAnonymous]
-        public async Task<IActionResult> SearchByName([FromRoute] string productName)
+        //[AllowAnonymous]
+        public async Task<IActionResult> SearchByNameAsync([FromRoute] string productName)
         {
             try
             {
-                var data = await productService.SearchByName(productName);
+                var data = await productService.SearchByNameAsync(productName);
                 return Ok(data);
             }
             catch (Exception e)
@@ -62,16 +63,17 @@ namespace Assignment.API.Controllers
 
         [HttpGet]
         [Route("GetProduct")]
-        public async Task<IActionResult> GetProduct(int? productId)
+        [AllowAnonymous]
+        public async Task<IActionResult> GetProductByIdAsync(int? Id)
         {
-            if (productId == null)
+            if (Id == null)
             {
                 return BadRequest();
             }
 
             try
             {
-                var product = await productService.GetProduct(productId);
+                var product = await productService.GetProductByIdAsync(Id);
 
                 if (product == null)
                 {
@@ -89,7 +91,7 @@ namespace Assignment.API.Controllers
         [HttpGet("{productId}")]
         [AllowAnonymous]
         //[Route("GetProductDetail")]
-        public async Task<IActionResult> GetProductDetail(int? productId)
+        public async Task<IActionResult> GetProductDetailAsync(int? productId)
         {
             if (productId == null)
             {
@@ -98,7 +100,7 @@ namespace Assignment.API.Controllers
 
             try
             {
-                var productDetail = await productService.GetProductDetail(productId);
+                var productDetail = await productService.GetProductDetailAsync(productId);
 
                 if (productDetail == null)
                 {
@@ -113,16 +115,15 @@ namespace Assignment.API.Controllers
             }
         }
 
-
         [HttpPost]
         [Route("AddProduct")]
-        public async Task<IActionResult> AddProduct([FromBody] Product model)
+        public async Task<IActionResult> AddProductAsync([FromBody] Product model)
         {
             if (ModelState.IsValid)
             {
                 try
                 {
-                    var productId = await productService.AddProduct(model);
+                    var productId = await productService.AddProductAsync(model);
                     if (productId > 0)
                     {
                         return Ok(productId);
@@ -145,7 +146,7 @@ namespace Assignment.API.Controllers
 
         [HttpDelete]
         [Route("DeleteProduct")]
-        public async Task<IActionResult> DeleteProduct(int? productId)
+        public async Task<IActionResult> DeleteProductAsync(int? productId)
         {
             int result = 0;
 
@@ -156,7 +157,7 @@ namespace Assignment.API.Controllers
 
             try
             {
-                result = await productService.DeleteProduct(productId);
+                result = await productService.DeleteProductAsync(productId);
                 if (result == 0)
                 {
                     return NotFound();
@@ -172,13 +173,13 @@ namespace Assignment.API.Controllers
 
         [HttpPut]
         [Route("UpdateProduct")]
-        public async Task<IActionResult> UpdateProduct([FromBody] Product model)
+        public async Task<IActionResult> UpdateProductAsync([FromBody] Product model)
         {
             if (ModelState.IsValid)
             {
                 try
                 {
-                    await productService.UpdateProduct(model);
+                    await productService.UpdateProductAsync(model);
 
                     return Ok();
                 }
