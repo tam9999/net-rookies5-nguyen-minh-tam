@@ -5,10 +5,9 @@ namespace Assignment.CustomerSite.Models
 {
     public class HomeViewModel
     {
-        public List<CategoryViewModel> Categories;
-        
-        public List<ProductViewModel> Products;
-        public ProductViewModel ProductDetail;
+        public List<Category> Categories;       
+        public List<Product> Products;
+        //public ProductViewModel ProductDetail;
         public List<CategoryViewModel> CategoryDetail;
         
     }

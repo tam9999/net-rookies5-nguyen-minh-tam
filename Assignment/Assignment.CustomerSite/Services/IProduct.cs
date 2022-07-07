@@ -7,7 +7,7 @@ namespace Assignment.CustomerSite.Services
     public interface IProduct
     {
         [Get("/api/Product/GetAllProduct")]
-        Task<List<ProductViewModel>> GetAllProduct();
+        Task<List<Product>> GetAllProductAsync();
 
         [Get("/api/Product/{productId}")]
         Task<ProductViewModel> GetProductDetail(int productId);

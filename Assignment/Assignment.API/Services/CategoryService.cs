@@ -66,14 +66,14 @@ namespace Assignment.API.Services
             return null;
         }
 
-        public async Task<List<CategoryViewModel>> GetCategoryDetailAsync(int? categoryId)
+        public async Task<List<CategoryViewModel>> GetCategoryDetailAsync()
         {
             if (db != null)
             {
                 return await(from c in db.Categories
                              from p in db.Products
                              from r in db.ProductRatings
-                             where c.Id == p.CategoryId && c.Id == categoryId
+                             where c.Id == p.CategoryId
                              select new CategoryViewModel
                              {
                                  Id = c.Id,

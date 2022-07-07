@@ -27,11 +27,11 @@ namespace Assignment.CustomerSite.Pages.Components.Product
         public async Task<IActionResult> OnGetAsync(int Id)
         {
             //var categories = _category.GetAllCategory().GetAwaiter().GetResult();
-            var products = _product.GetAllProduct().GetAwaiter().GetResult();
-            var productViewModel = _product.GetProductDetail(Id).GetAwaiter().GetResult();
-            //_home.Categories = categories;
-            _home.Products = products;
-            _home.ProductDetail = productViewModel;
+            //var products = _product.GetAllProduct().GetAwaiter().GetResult();
+            //var productViewModel = _product.GetProductDetail(Id).GetAwaiter().GetResult();
+            ////_home.Categories = categories;
+            //_home.Products = products;
+            //_home.ProductDetail = productViewModel;
 
             return Page();
         }

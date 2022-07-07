@@ -7,9 +7,9 @@ namespace Assignment.CustomerSite.Services
     public interface ICategory
     {
         [Get("/api/Categories/GetAllCategory")] 
-        Task<List<CategoryViewModel>> GetAllCategoryAsync();
+        Task<List<Category>> GetAllCategoryAsync();
 
-        [Get("/api/Categories/{categoryId}")]
-        Task<List<CategoryViewModel>> GetCategoryDetail(int? categoryId);
+        [Get("/api/Categories/ProductByCategory")]
+        Task<List<CategoryViewModel>> GetCategoryDetailAsync();
     }
 }

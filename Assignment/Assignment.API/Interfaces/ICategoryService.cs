@@ -10,7 +10,7 @@ namespace Assignment.API.Interfaces
         Task<int> AddCategoryAsync(Category category);
         Task<int> DeleteCategoryAsync(int? CategoryId);
         Task UpdateCategoryAsync(Category category);
-        Task<List<CategoryViewModel>> GetCategoryDetailAsync(int? categoryId);
+        Task<List<CategoryViewModel>> GetCategoryDetailAsync();
         
     }
 }
