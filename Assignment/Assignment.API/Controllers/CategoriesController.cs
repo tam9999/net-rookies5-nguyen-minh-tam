@@ -36,42 +36,42 @@ namespace Assignment.API.Controllers
 
         }
 
-        [HttpGet]
-        [Route("GetCategories")]
-        public async Task<IActionResult> GetCategoryAsync(int? categoryId)
-        {
-            if (categoryId == null)
-            {
-                return BadRequest();
-            }
+        //[HttpGet]
+        //[AllowAnonymous]
+        //[Route("GetCategories")]
+        //public async Task<IActionResult> GetCategoryAsync(int? categoryId)
+        //{
+        //    if (categoryId == null)
+        //    {
+        //        return BadRequest();
+        //    }
 
-            try
-            {
-                var category = await categoryService.GetCategoryAsync(categoryId);
+        //    try
+        //    {
+        //        var category = await categoryService.GetCategoryAsync(categoryId);
 
-                if (category == null)
-                {
-                    return NotFound();
-                }
+        //        if (category == null)
+        //        {
+        //            return NotFound();
+        //        }
 
-                return Ok(category);
-            }
-            catch (Exception)
-            {
-                return BadRequest();
-            }
-        }
+        //        return Ok(category);
+        //    }
+        //    catch (Exception)
+        //    {
+        //        return BadRequest();
+        //    }
+        //}
 
-        [HttpGet("ProductByCategory")]
-        [AllowAnonymous]
+        [HttpGet("{categoryId}")]       
         //[Route("GetCategoryDetail")]
-        public async Task<IActionResult> GetCategoryDetailAsync()
+        public async Task<IActionResult> GetCategoryDetailAsync(int categoryId)
         {
            
 
             try
             {
-                var catagoryDetail = await categoryService.GetCategoryDetailAsync();
+                var catagoryDetail = await categoryService.GetCategoryDetailAsync(categoryId);
 
                 if (catagoryDetail == null)
                 {

@@ -21,7 +21,7 @@ namespace Assignment.CustomerSite.Pages
             _logger = logger;
             _category = RestService.For<ICategory>("https://localhost:5445");
             _product = RestService.For<IProduct>("https://localhost:5445");
-            _categoryViewModel = RestService.For<ICategory>("https://localhost:5445");
+            //_categoryViewModel = RestService.For<ICategory>("https://localhost:5445");
             _home = new HomeViewModel();
         }
 
@@ -36,13 +36,13 @@ namespace Assignment.CustomerSite.Pages
             //ProductViewModel[] mang;
             //for (int i = 0; i < amount; i++)
             //{
-            var categoryViewModel = _categoryViewModel.GetCategoryDetailAsync().GetAwaiter().GetResult();
+            //var categoryViewModel = _categoryViewModel.GetCategoryDetailAsync().GetAwaiter().GetResult();
             //    string url = "categoryViewModel" + i;
             //    url = categoryViewModel;
             //}
             
             
-            _home.CategoryDetail = categoryViewModel;
+            //_home.CategoryDetail = categoryViewModel;
             _home.Products = products;
             _home.Categories = categories;
             return Page();

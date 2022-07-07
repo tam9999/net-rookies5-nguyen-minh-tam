@@ -25,13 +25,13 @@ namespace Assignment.API.Services
             return 0;
         }
 
-        public async Task<int> DeleteCategoryAsync(int? CategoryId)
+        public async Task<int> DeleteCategoryAsync(int? categoryId)
         {
             int result = 0;
 
             if (db != null)
             {
-                var category = await db.Categories.FirstOrDefaultAsync(x => x.Id == CategoryId);
+                var category = await db.Categories.FirstOrDefaultAsync(x => x.Id == categoryId);
 
                 if (category != null)
                 {
@@ -53,27 +53,27 @@ namespace Assignment.API.Services
             return null;
         }
 
-        public async Task<Category> GetCategoryAsync(int? categoryId)
-        {
-            if (db != null)
-            {
-                return await (from c in db.Categories
-                              where c.Id == categoryId
-                              select c
-                             ).FirstOrDefaultAsync();
-            }
+        //public async Task<Category> GetCategoryAsync(int? categoryId)
+        //{
+        //    if (db != null)
+        //    {
+        //        return await (from c in db.Categories
+        //                      where c.Id == categoryId
+        //                      select c
+        //                     ).FirstOrDefaultAsync();
+        //    }
 
-            return null;
-        }
+        //    return null;
+        //}
 
-        public async Task<List<CategoryViewModel>> GetCategoryDetailAsync()
+        public async Task<List<CategoryViewModel>> GetCategoryDetailAsync(int categoryId)
         {
             if (db != null)
             {
                 return await(from c in db.Categories
                              from p in db.Products
                              from r in db.ProductRatings
-                             where c.Id == p.CategoryId
+                             where c.Id == p.CategoryId && c.Id == categoryId
                              select new CategoryViewModel
                              {
                                  Id = c.Id,
