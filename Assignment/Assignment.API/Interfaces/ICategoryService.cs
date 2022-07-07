@@ -5,12 +5,12 @@ namespace Assignment.API.Interfaces
 {
     public interface ICategoryService
     {
-        Task<List<Category>> GetAllCategory();
-        Task<Category> GetCategories(int? categoryId);
-        Task<int> AddCategory(Category category);
-        Task<int> DeleteCategory(int? CategoryId);
-        Task UpdateCategory(Category category);
-        Task<List<CategoryViewModel>> GetCategoryDetail(int? categoryId);
+        Task<List<Category>> GetAllCategoryAsync();
+        Task<Category> GetCategoryAsync(int? categoryId);
+        Task<int> AddCategoryAsync(Category category);
+        Task<int> DeleteCategoryAsync(int? CategoryId);
+        Task UpdateCategoryAsync(Category category);
+        Task<List<CategoryViewModel>> GetCategoryDetailAsync(int? categoryId);
         
     }
 }

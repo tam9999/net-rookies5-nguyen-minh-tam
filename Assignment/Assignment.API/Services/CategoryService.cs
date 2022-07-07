@@ -14,7 +14,7 @@ namespace Assignment.API.Services
             this.db = _db;
         }
 
-        public async Task<int> AddCategory(Category category)
+        public async Task<int> AddCategoryAsync(Category category)
         {
             if (db != null)
             {
@@ -25,7 +25,7 @@ namespace Assignment.API.Services
             return 0;
         }
 
-        public async Task<int> DeleteCategory(int? CategoryId)
+        public async Task<int> DeleteCategoryAsync(int? CategoryId)
         {
             int result = 0;
 
@@ -44,7 +44,7 @@ namespace Assignment.API.Services
             return result;
         }
 
-        public async Task<List<Category>> GetAllCategory()
+        public async Task<List<Category>> GetAllCategoryAsync()
         {
             if (db != null)
             {
@@ -53,7 +53,7 @@ namespace Assignment.API.Services
             return null;
         }
 
-        public async Task<Category> GetCategories(int? categoryId)
+        public async Task<Category> GetCategoryAsync(int? categoryId)
         {
             if (db != null)
             {
@@ -66,7 +66,7 @@ namespace Assignment.API.Services
             return null;
         }
 
-        public async Task<List<CategoryViewModel>> GetCategoryDetail(int? categoryId)
+        public async Task<List<CategoryViewModel>> GetCategoryDetailAsync(int? categoryId)
         {
             if (db != null)
             {
@@ -93,7 +93,7 @@ namespace Assignment.API.Services
             return null;
         }
 
-        public async Task UpdateCategory(Category category)
+        public async Task UpdateCategoryAsync(Category category)
         {
             if (db != null)
             {

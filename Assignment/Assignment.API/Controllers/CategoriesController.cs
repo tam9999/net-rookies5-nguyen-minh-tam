@@ -16,11 +16,11 @@ namespace Assignment.API.Controllers
 
         [HttpGet]
         [Route("GetAllCategory")]
-        public async Task<IActionResult> GetAllCategory()
+        public async Task<IActionResult> GetAllCategoryAsync()
         {
             try
             {
-                var categories = await categoryService.GetAllCategory();
+                var categories = await categoryService.GetAllCategoryAsync();
                 if (categories == null)
                 {
                     return NotFound();
@@ -37,7 +37,7 @@ namespace Assignment.API.Controllers
 
         [HttpGet]
         [Route("GetCategories")]
-        public async Task<IActionResult> GetCategories(int? categoryId)
+        public async Task<IActionResult> GetCategoryAsync(int? categoryId)
         {
             if (categoryId == null)
             {
@@ -46,7 +46,7 @@ namespace Assignment.API.Controllers
 
             try
             {
-                var category = await categoryService.GetCategories(categoryId);
+                var category = await categoryService.GetCategoryAsync(categoryId);
 
                 if (category == null)
                 {
@@ -63,7 +63,7 @@ namespace Assignment.API.Controllers
 
         [HttpGet]
         [Route("GetCategoryDetail")]
-        public async Task<IActionResult> GetCategoryDetail(int? categoryId)
+        public async Task<IActionResult> GetCategoryDetailAsync(int? categoryId)
         {
             if (categoryId == null)
             {
@@ -72,7 +72,7 @@ namespace Assignment.API.Controllers
 
             try
             {
-                var catagoryDetail = await categoryService.GetCategoryDetail(categoryId);
+                var catagoryDetail = await categoryService.GetCategoryDetailAsync(categoryId);
 
                 if (catagoryDetail == null)
                 {
@@ -89,13 +89,13 @@ namespace Assignment.API.Controllers
 
         [HttpPost]
         [Route("AddCategory")]
-        public async Task<IActionResult> AddCategory([FromBody] Category model)
+        public async Task<IActionResult> AddCategoryAsync([FromBody] Category model)
         {
             if (ModelState.IsValid)
             {
                 try
                 {
-                    var categoryId = await categoryService.AddCategory(model);
+                    var categoryId = await categoryService.AddCategoryAsync(model);
                     if (categoryId > 0)
                     {
                         return Ok(categoryId);
@@ -118,7 +118,7 @@ namespace Assignment.API.Controllers
 
         [HttpDelete]
         [Route("DeleteCategory")]
-        public async Task<IActionResult> DeleteCategory(int? CategoryId)
+        public async Task<IActionResult> DeleteCategoryAsync(int? CategoryId)
         {
             int result = 0;
 
@@ -129,7 +129,7 @@ namespace Assignment.API.Controllers
 
             try
             {
-                result = await categoryService.DeleteCategory(CategoryId);
+                result = await categoryService.DeleteCategoryAsync(CategoryId);
                 if (result == 0)
                 {
                     return NotFound();
@@ -145,13 +145,13 @@ namespace Assignment.API.Controllers
 
         [HttpPut]
         [Route("UpdateCategory")]
-        public async Task<IActionResult> UpdateCategory([FromBody] Category model)
+        public async Task<IActionResult> UpdateCategoryAsync([FromBody] Category model)
         {
             if (ModelState.IsValid)
             {
                 try
                 {
-                    await categoryService.UpdateCategory(model);
+                    await categoryService.UpdateCategoryAsync(model);
 
                     return Ok();
                 }

@@ -1,6 +1,6 @@
-﻿@page "/Components/Detail"
-@*@model Assignment.CustomerSite.Pages.Components.Product.ProductDetailModel*@
-@model ProductDetailModel
+﻿@page "/Components/Detail/"
+@model Assignment.CustomerSite.Pages.Components.Product.ProductDetailModel
+
 @{
 	ViewData["Title"] = "Product Detail";
 	
@@ -249,7 +249,7 @@
 							<li><a href="#" class="icon dribbble"><i class="fa fa-dribbble" aria-hidden="true"></i><span></span></a></li>
 						</ul>
 							<div class="add add-3">
-								<button class="btn btn-danger my-cart-btn my-cart-b" data-id="1" data-name="Wheat" data-summary="summary 1" data-price="6.00" data-quantity="1" data-image="images/si.jpg">Add to Cart</button>
+								<button class="btn btn-danger my-cart-btn my-cart-b" data-id="1" data-name="@Model._home.ProductDetail.Name" data-summary="summary 1" data-price="6.00" data-quantity="1" data-image="images/si.jpg">Add to Cart</button>
 							</div>
 				
 					<div class="clearfix"> </div>

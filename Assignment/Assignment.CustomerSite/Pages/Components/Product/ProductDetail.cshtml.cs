@@ -12,7 +12,7 @@ namespace Assignment.CustomerSite.Pages.Components.Product
         private readonly ILogger<ProductDetailModel> _logger;
         private readonly ICategory _category;
         private readonly IProduct _product;
-        //private readonly IProductViewModel _productViewModel;
+        private readonly IProductViewModel _productViewModel;
         public HomeViewModel _home;
 
         public ProductDetailModel(ILogger<ProductDetailModel> logger)
@@ -20,7 +20,7 @@ namespace Assignment.CustomerSite.Pages.Components.Product
             _logger = logger;
             _category = RestService.For<ICategory>("https://localhost:5445");
             _product = RestService.For<IProduct>("https://localhost:5445");
-            //_productViewModel = RestService.For<IProductViewModel>("https://localhost:5445");
+            _productViewModel = RestService.For<IProductViewModel>("https://localhost:5445");
             _home = new HomeViewModel();
         }
 
@@ -28,12 +28,18 @@ namespace Assignment.CustomerSite.Pages.Components.Product
         {
             var categories = _category.GetAllCategory().GetAwaiter().GetResult();
             var products = _product.GetAllProduct().GetAwaiter().GetResult();
-            //var productViewModel = _productViewModel.GetProductDetail().GetAwaiter().GetResult();
+            var productViewModel = _productViewModel.GetProductDetail(1).GetAwaiter().GetResult();
             _home.Categories = categories;
             _home.Products = products;
-            //_home.ProductDetail = productViewModel;
+            _home.ProductDetail = productViewModel;
 
             return Page();
         }
+        //public async Task<IActionResult> OnGet(int Id)
+        //{
+        //    var productViewModel = _productViewModel.GetProductDetail(Id).GetAwaiter().GetResult();
+        //    _home.ProductDetail = productViewModel;
+        //    return Page();
+        //}
     }
 }

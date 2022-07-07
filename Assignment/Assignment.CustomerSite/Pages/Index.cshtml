@@ -1,4 +1,4 @@
-﻿@page
+﻿@page 
 @model IndexModel
 @{
     ViewData["Title"] = "Rice Store";
@@ -122,10 +122,6 @@
 			<div class="tab-head ">
 				<nav class="nav-sidebar">
 					<ul class="nav tabs ">
-					  @*<li class="active"><a href="#tab1" data-toggle="tab">Staples</a></li>
-					  <li class=""><a href="#tab2" data-toggle="tab">Snacks</a></li> 
-					  <li class=""><a href="#tab3" data-toggle="tab">Fruits & Vegetables</a></li>  
-					  <li class=""><a href="#tab4" data-toggle="tab">Breakfast & Cereal</a></li>*@
 					  @foreach(var item in Model._home.Categories)
 					  {
 						<li class=""><a href="#@item.Id" data-toggle="tab">@item.CategoryName</a></li>
@@ -135,7 +131,7 @@
 				<div class=" tab-content tab-content-t ">
 					@foreach (var item in Model._home.CategoryDetail)
 					{
-						<div class="tab-pane active text-style" id="@item.Id">
+						<div class="tab-pane active text" id="@item.Id">
 						<div class=" con-w3l">
 							<div class="col-md-3 m-wthree">
 								<div class="col-m">								
@@ -145,7 +141,7 @@
 									</a>
 									<div class="mid-1">
 										<div class="women">
-											<h6><a asp-page="/Components/Product/ProductDetail" asp-route-productId="@item.Id">@item.ProductName</a></h6>							
+											<h6><a asp-page="/Components/Product/ProductDetail" asp-route-productId="@item.ProductId">@item.ProductName</a></h6>							
 										</div>
 										<div class="mid-2">
 											<p ><em class="item_price">@item.Price</em></p>
@@ -164,8 +160,8 @@
 							
 							<div class="clearfix"></div>
 						 </div>
-					</div>
-					}
+						</div>
+						}
 					
 				</div>
 			</div>

@@ -5,7 +5,7 @@ namespace Assignment.CustomerSite.Services
 {
 	public interface ICategoryViewModel
 	{
-		[Get("/api/Category/GetCategoryDetail/{categoryId}")]
+		[Get("/api/Categories/GetCategoryDetail/")]
 		Task<List<CategoryViewModel>> GetCategoryDetail(int? categoryId);
 	}
 }
