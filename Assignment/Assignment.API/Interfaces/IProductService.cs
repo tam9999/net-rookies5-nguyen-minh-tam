@@ -12,7 +12,6 @@ namespace Assignment.API.Interfaces
         Task UpdateProductAsync(Product product);
         Task<ProductViewModel> GetProductDetailAsync(int? Id);
         Task<List<SearchProductViewModel>> SearchByNameAsync(string productName);
-        Task<List<ProductViewModel>> GetTop8Async();
-        
+        Task<List<ProductViewModel>> GetTop8Async();      
     }
 }
