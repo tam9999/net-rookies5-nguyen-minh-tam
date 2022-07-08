@@ -8,10 +8,10 @@ namespace Assignment.Domain.Enum
 {
     public enum Status
     {
-        Pending,
-        Confirmed,
-        Shipping,
-        Canceled,
-        Completed
+        Pending = 0,
+        Confirmed = 1,
+        Shipping = 2,
+        Canceled = 3,
+        Completed = 4
     }
 }
