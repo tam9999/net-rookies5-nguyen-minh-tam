@@ -9,7 +9,7 @@ namespace Assignment.CustomerSite.Services
         [Get("/api/Categories/GetAllCategory")] 
         Task<List<Category>> GetAllCategoryAsync();
 
-        [Get("/api/Categories/{categoryId")]
-        Task<List<CategoryViewModel>> GetCategoryDetailAsync(int categoryId);
+        [Get("/api/Categories/{categoryId}")]
+        Task<List<CategoryViewModel>> GetCategoryDetailAsync( int categoryId);
     }
 }

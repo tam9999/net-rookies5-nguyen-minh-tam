@@ -70,24 +70,24 @@ namespace Assignment.API.Services
         {
             if (db != null)
             {
-                return await(from c in db.Categories
-                             from p in db.Products
-                             from r in db.ProductRatings
-                             where c.Id == p.CategoryId && c.Id == categoryId
-                             select new CategoryViewModel
-                             {
-                                 Id = c.Id,
-                                 CategoryName = c.CategoryName,
-                                 Description = c.Description,
-                                 ProductId = p.Id,
-                                 ProductName = p.ProductName,
-                                 Image = p.Image,
-                                 Price = p.Price,
-                                 ProductRatingId = p.ProductRatingId,
-                                 Start = r.Start,
-                                 DescriptionProduct = p.Description,
-                                 Qty = p.Qty
-                             }).ToListAsync();
+                return await (from c in db.Categories
+                              from p in db.Products
+                              from r in db.ProductRatings
+                              where c.Id == p.CategoryId && c.Id == categoryId
+                              select new CategoryViewModel
+                              {
+                                  Id = c.Id,
+                                  CategoryName = c.CategoryName,
+                                  Description = c.Description,
+                                  ProductId = p.Id,
+                                  ProductName = p.ProductName,
+                                  Image = p.Image,
+                                  Price = p.Price,
+                                  ProductRatingId = p.ProductRatingId,
+                                  Start = r.Start,
+                                  DescriptionProduct = p.Description,
+                                  Qty = p.Qty
+                              }).ToListAsync();
             }
 
             return null;

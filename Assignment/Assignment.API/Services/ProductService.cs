@@ -97,7 +97,7 @@ namespace Assignment.API.Services
         public async Task<List<SearchProductViewModel>> SearchByNameAsync(string productName)
         {
             //return await db.Products.Where(x => x.ProductName.Contains(productName)).Select(product => _mapper.Map<SearchProductViewModel>(product)).ToListAsync();
-            return await db.Products.Where(p => p.ProductName.Contains(productName) && p.IsDeleted==true).Select(product => new SearchProductViewModel()
+            return await db.Products.Where(p => p.ProductName.Contains(productName) && p.IsDeleted == true).Select(product => new SearchProductViewModel()
             {
                 Id = product.Id,
                 Name = product.ProductName,
