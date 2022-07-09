@@ -51,6 +51,7 @@ namespace Assignment.API.Services
                 return await db.Categories.ToListAsync();
             }
             return null;
+
         }
 
         //public async Task<Category> GetCategoryAsync(int? categoryId)

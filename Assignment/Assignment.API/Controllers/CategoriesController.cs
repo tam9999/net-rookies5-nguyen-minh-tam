@@ -117,18 +117,18 @@ namespace Assignment.API.Controllers
 
         [HttpDelete]
         [Route("DeleteCategory")]
-        public async Task<IActionResult> DeleteCategoryAsync(int? CategoryId)
+        public async Task<IActionResult> DeleteCategoryAsync(int? categoryId)
         {
             int result = 0;
 
-            if (CategoryId == null)
+            if (categoryId == null)
             {
                 return BadRequest();
             }
 
             try
             {
-                result = await categoryService.DeleteCategoryAsync(CategoryId);
+                result = await categoryService.DeleteCategoryAsync(categoryId);
                 if (result == 0)
                 {
                     return NotFound();

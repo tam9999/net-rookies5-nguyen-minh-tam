@@ -19,6 +19,27 @@ namespace Assignment.API.Controllers
             this.userService = userService;
             this.tokenService = tokenService;
         }
+        
+        [HttpGet]
+        [Route("GetUsers")]
+        public async Task<IActionResult> GetUsersAsync()
+        {
+            try
+            {
+                var product = await userService.GetUsersAsync();
+                if (product == null)
+                {
+                    return NotFound();
+                }
+
+                return Ok(product);
+            }
+            catch (Exception)
+            {
+                return BadRequest();
+            }
+
+        }
 
         [HttpPost]
         [Route("login")]

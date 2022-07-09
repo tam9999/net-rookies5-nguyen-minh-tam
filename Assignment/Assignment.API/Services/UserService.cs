@@ -19,6 +19,15 @@ namespace Assignment.API.Services
             this.tokenService = tokenService;
         }
 
+        public async Task<List<User>> GetUsersAsync()
+        {
+            if (onlineshopDbContext != null)
+            {
+                return await onlineshopDbContext.Users.ToListAsync();
+            }
+            return null;
+        }
+
         public async Task<TokenResponse> LoginAsync(LoginRequest loginRequest)
         {
             var user = onlineshopDbContext.Users.SingleOrDefault(user => user.Active && user.Email == loginRequest.Email);
