@@ -63,6 +63,7 @@
     <!---//End-rate---->
 </head>
 <body>
+
     @RenderBody()
     @await RenderSectionAsync("Scripts", required: false)
 </body>
@@ -76,29 +77,28 @@
 		<div class="col-md-3 footer-grid ">
 			<h3>Menu</h3>
 			<ul>
-				<li><a href="index.html">Home</a></li>
-				<li><a href="kitchen.html">Category Menu</a></li>
-				<li><a href="care.html">About</a></li>
-				<li><a href="contact.html">Contact</a></li>
+				<li><a asp-page="/Index">Home</a></li>
+				<li><a href="#">Category Menu</a></li>
+				<li><a asp-page="/Components/About/About">About</a></li>
+				<li><a asp-page="/Components/Contact/Contact">Contact</a></li>
 			</ul>
 		</div>
 		<div class="col-md-3 footer-grid ">
 			<h3>Customer Services</h3>
 			<ul>
-				<li><a href="shipping.html">Shipping</a></li>
-				<li><a href="terms.html">Terms & Conditions</a></li>
-				<li><a href="faqs.html">Faqs</a></li>
-				<li><a href="contact.html">Contact</a></li>
-				<li><a href="offer.html">Online Shopping</a></li>						 
+				<li><a href="#">Shipping</a></li>
+				<li><a href="#">Terms & Conditions</a></li>
+				
+				<li><a asp-page="/Components/Contact/Contact">Contact</a></li>
+				<li><a href="#">Online Shopping</a></li>						 
 				 
 			</ul>
 		</div>
 		<div class="col-md-3 footer-grid">
 			<h3>My Account</h3>
 			<ul>
-				<li><a href="login.html">Login</a></li>
-				<li><a href="register.html">Register</a></li>
-				<li><a href="wishlist.html">Wishlist</a></li>
+				<li><a asp-page="/Components/Auth/Login">Login</a></li>
+				<li><a asp-page="/Components/Auth/Register">Register</a></li>
 				
 			</ul>
 		</div>
@@ -106,7 +106,7 @@
 			<div class="footer-bottom">
 				<img src="~/images/loader.png" alt=""> 
 				<h2 >
-					<a href="index.html"> <b>T<br>H<br>E</b> Rice Store<span>Hạt Ngọc Trời</span></a>
+					<a asp-page="/Index"> <b>T<br>H<br>E</b> Rice Store<span>Hạt Ngọc Trời</span></a>
 				</h2>
 				<p class="fo-para">Gạo là lương thực quan trọng nhất ở Việt Nam. Nó cũng là nguồn lương thực quan trọng nhất cho hơn nửa loài người, nhất là ở các nước Đông Á, Đông Nam Á và Nam Á.</p>
 				<ul class="social-fo">

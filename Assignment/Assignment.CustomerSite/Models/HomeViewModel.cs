@@ -7,7 +7,7 @@ namespace Assignment.CustomerSite.Models
     {
         public List<Category> Categories;       
         public List<Product> Products;
-        //public ProductViewModel ProductDetail;
+        public ProductViewModel ProductDetail;
         public List<CategoryViewModel> CategoryDetail;
         
     }
