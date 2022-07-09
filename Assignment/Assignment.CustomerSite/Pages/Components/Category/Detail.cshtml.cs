@@ -18,7 +18,6 @@ namespace Assignment.CustomerSite.Pages.Components.Category
         {
             _logger = logger;
             _category = RestService.For<ICategory>("https://localhost:5445");
-            //_categoryViewModel = RestService.For<ICategory>("https://localhost:5445");
             _product = RestService.For<IProduct>("https://localhost:5445");
             _home = new HomeViewModel();
         }
