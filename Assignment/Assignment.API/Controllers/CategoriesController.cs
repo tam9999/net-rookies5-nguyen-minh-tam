@@ -63,12 +63,15 @@ namespace Assignment.API.Controllers
         //    }
         //}
 
-        [HttpGet("{categoryId}")]       
-        //[Route("GetCategoryDetail")]
-        public async Task<IActionResult> GetCategoryDetailAsync(int categoryId)
+        [HttpGet("{categoryId}")]
+        [AllowAnonymous]       
+        
+        public async Task<IActionResult> GetCategoryDetailAsync(int? categoryId)
         {
-           
-
+            if (categoryId == null)
+            {
+                return BadRequest();
+            }
             try
             {
                 var catagoryDetail = await categoryService.GetCategoryDetailAsync(categoryId);

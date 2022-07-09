@@ -10,6 +10,6 @@ namespace Assignment.CustomerSite.Services
         Task<List<Product>> GetAllProductAsync();
 
         [Get("/api/Product/{productId}")]
-        Task<ProductViewModel> GetProductDetail(int productId);
+        Task<ProductViewModel> GetProductDetailAsync(int productId);
     }
 }

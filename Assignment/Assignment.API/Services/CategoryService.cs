@@ -2,6 +2,7 @@
 using Assignment.Domain.Data;
 using Assignment.Domain.Entities;
 using Assignment.SharedViewModels.ViewModels;
+using AutoMapper;
 using Microsoft.EntityFrameworkCore;
 
 namespace Assignment.API.Services
@@ -9,9 +10,11 @@ namespace Assignment.API.Services
     public class CategoryService : ICategoryService
     {
         ApplicationDbContext db;
-        public CategoryService(ApplicationDbContext _db)
+        private readonly IMapper _mapper;
+        public CategoryService(ApplicationDbContext _db, IMapper mapper)
         {
             this.db = _db;
+            _mapper = mapper;
         }
 
         public async Task<int> AddCategoryAsync(Category category)
@@ -67,13 +70,14 @@ namespace Assignment.API.Services
         //    return null;
         //}
 
-        public async Task<List<CategoryViewModel>> GetCategoryDetailAsync(int categoryId)
+        public async Task<List<CategoryViewModel>> GetCategoryDetailAsync(int? categoryId)
         {
+            //return await db.Categories.Where(x => x.Id == categoryId).Select(category => _mapper.Map<CategoryViewModel>(category)).ToListAsync();
             if (db != null)
             {
                 return await (from c in db.Categories
                               from p in db.Products
-                              from r in db.ProductRatings
+                              //from r in db.ProductRatings
                               where c.Id == p.CategoryId && c.Id == categoryId
                               select new CategoryViewModel
                               {
@@ -85,7 +89,7 @@ namespace Assignment.API.Services
                                   Image = p.Image,
                                   Price = p.Price,
                                   ProductRatingId = p.ProductRatingId,
-                                  Start = r.Start,
+                                  //Start = r.Start,
                                   DescriptionProduct = p.Description,
                                   Qty = p.Qty
                               }).ToListAsync();
