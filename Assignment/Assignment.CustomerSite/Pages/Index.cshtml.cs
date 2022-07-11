@@ -31,18 +31,6 @@ namespace Assignment.CustomerSite.Pages
 
             var products = _product.GetAllProductAsync().GetAwaiter().GetResult();
             
-            //var amount = categories.Count();
-
-            //ProductViewModel[] mang;
-            //for (int i = 0; i < amount; i++)
-            //{
-            //var categoryViewModel = _categoryViewModel.GetCategoryDetailAsync().GetAwaiter().GetResult();
-            //    string url = "categoryViewModel" + i;
-            //    url = categoryViewModel;
-            //}
-            
-            
-            //_home.CategoryDetail = categoryViewModel;
             _home.Products = products;
             _home.Categories = categories;
             return Page();
