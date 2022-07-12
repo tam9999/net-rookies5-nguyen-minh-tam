@@ -3,7 +3,6 @@ import React, { useState } from "react";
 
 function Product() {
 const [productList, setproductList] = useState([]);
-const [showFormCreateProduct, setshowFormCreateProduct] = useState(false)
 function GetAllProduct() {
 const url = "http://localhost:5002/api/Product/GetAllProduct/";
 
@@ -23,19 +22,17 @@ return (
 <div className="table-responsive mt-5">
     <table className="table table-bordered border-dark">
     <thead>
-        <tr>
-        <th scope="col">Id</th>
+        <tr>       
         <th scope="col">ProductName</th>
         <th scope="col">Price</th>
         <th scope="col">Description</th>
         <th scope="col">ImageTitle</th>
         <th scope="col">Action</th>
         </tr>
-        </thead>
+    </thead>
         <tbody>
         {productList.map((product) => (
         <tr key={product.id}>
-            <th scope="row"> {product.id} </th>
             <td>{product.productName}</td>
             <td>{product.price}</td>
             <td>{product.description}</td>
@@ -53,7 +50,6 @@ return (
     </tbody>
     </table>
     <div>
-    <button onClick={() => setshowFormCreateProduct(true)}>Create New Products</button>
     <button onClick={() => GetAllProduct()}>Get Products</button>
     </div>
     
