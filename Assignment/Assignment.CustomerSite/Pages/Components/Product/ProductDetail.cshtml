@@ -7,6 +7,58 @@
 }
 <!DOCTYPE html>
 <html>
+    <style>
+        .rating {
+	        background: #fff;
+        }
+        input[type="radio"] {
+	        position: fixed;
+	        top: 0;
+	        right: 100%;
+        }
+        #lb {
+	        font-size: 1.5em;
+	        padding: 0.1em;
+	        margin: 0;
+	        float: left;
+	        cursor: pointer;
+        }
+        input[type="radio"]:checked ~ .star + #lb {
+	        background: none;
+	        color: #aaa;
+            
+        }
+        .star + #lb {
+	        background: #fff;
+	        color: orange;
+	        margin: 0 0 0.2em 0;
+        }
+        .form_field {
+            width: 90%;
+            height: 55px;
+            padding: 15px 22px;
+            box-sizing: border-box;
+            border: 4px solid #a9a3a3;
+            border-radius: 5px;
+            background-color: #c1c1c1;
+            resize: none;
+        }
+       
+        /* CSS */
+        .button-12 {        
+          padding: 16px 12px;        
+          border-radius: 6px;
+          border: none;
+          background: #6E6D70;
+          color: #DFDEDF;
+          
+        }
+
+        .button-12:focus {
+          box-shadow: inset 0px 0.8px 0px -0.25px rgba(255, 255, 255, 0.2), 0px 0.5px 1px rgba(0, 0, 0, 0.1), 0px 0px 0px 3.5px rgba(58, 108, 217, 0.5);
+          outline: 0;
+        }
+    </style>
 <body>
  		<a href="#offer"><img src="~/images/download.png" class="img-head" alt=""></a>
     <div class="header">
@@ -123,7 +175,7 @@
 				  <p class="reduced ">@String.Format(format, "{0:c0}", @Model._home.ProductDetail.Price)</p>
 				</div>
 				<div class="block block-w3">
-					<div class="starbox small ghosting"> </div>
+					
 				</div>
 				<p class="in-pa">@Model._home.ProductDetail.Description</p>
 			   	
@@ -139,14 +191,73 @@
 				
 				 
 			   
-			<div class="clearfix"> </div>
+			    <div class="clearfix"> </div>
 			</div>
-		 
+		          <form asp-page="/Components/Product/ProductDetail" asp-route-Id="@Model._home.ProductDetail.Id" method="post">
+                       <div class="rating">
+		                        <input class="star" type="radio" name="star" id="rate-5" value="5" />
+		                        <label id="lb" for="rate-5"><i class="fa fa-star"></i></label>
+
+		                        <input class="star" type="radio" name="star" id="rate-4" value="4" />
+		                        <label id="lb" for="rate-4"><i class="fa fa-star"></i></label>
+
+		                        <input class="star" type="radio" name="star" id="rate-3" value="3"/>
+		                        <label id="lb" for="rate-3"><i class="fa fa-star"></i></label>
+
+		                        <input class="star" type="radio" name="star" id="rate-2" value="2" />
+		                        <label id="lb" for="rate-2"><i class="fa fa-star"></i></label>
+
+		                        <input class="star" type="radio" name="star" id="rate-5" value="1" />
+		                        <label id="lb" for="rate-1"><i class="fa fa-star"></i></label>
+                                <br/>
+                          
+                                <input type="textarea" class="form_field" placeholder="Your Feed Back" name="comment" required />
+                              
+                                <button class="button-12" type="submit">Send</button>
+                            
+                              
+                          
+                        </div>
+                    
+                    
+                   </form>
 
 			</div>
-		   <div class="clearfix"> </div>
+            <div class="clearfix"> </div>
+            @if(Model._home.Comments != null)
+                 {
+                    @foreach (var item in Model._home.Comments)
+                    {
+                        <div class="small-container" style="border-bottom: 1px solid rgb(187, 183, 183)">
+                            <div class="row" style="padding-left:12px;">
+                                <div>
+                                    @item.UserName
+                                </div>
+                                <div>
+                                    <span hidden id="user-cmt-star"></span>
+                                    <div style="width: 200px;"></div>
+                                    @for (var i = 0; i < item.Star; i++)
+                                    {
+                                        <i class="fa fa-star" style="color: orange;"></i>
+                                    }
+                                    @for (var i = 0; i < (5 - item.Star); i++)
+                                    {
+                                        <i class="fa fa-star-o" style="color: orange;"></i>
+                                    }
+                                </div>
+                                <div>@item.CreatedDate</div>
+                    
+                            </div>
+                            <div class="cmt-content">
+                                @item.Comment
+                            </div>
+                        </div>
+                        <br />
+                    }
+                 }
+		   
 	   </div>	
-				 
+     
 				
 	</div>
 </div>
@@ -181,7 +292,9 @@
 								        <div class="mid-2">
 									        <p ><em class="item_price">@String.Format(format, "{0:c0}", @item.Price)</em></p>
 										        <div class="block">
-										        <div class="starbox small ghosting"> </div>
+										        <div class="starbox small ghosting">
+                                                   
+                                                </div>
 									        </div>
 									        <div class="clearfix"></div>
 								        </div>
@@ -192,10 +305,13 @@
 									
 					        </div>
 				        </div>
+
 			        }							
 				  
                 }
             }
+           
+            
 						
 			<div class="clearfix"></div>
 			</div>
@@ -275,7 +391,7 @@
                             <br />
                             <div class="price_single">
                                 <span class="reducedfrom ">@String.Format(format, "{0:c0}", @item.Price )</span>
-
+                                
                                 <div class="clearfix"></div>
                             </div>
                             <h4 class="quick">Mô tả về sản phẩm:</h4>

@@ -11,5 +11,9 @@ namespace Assignment.CustomerSite.Services
 
         [Get("/api/Product/{productId}")]
         Task<ProductViewModel> GetProductDetailAsync(int productId);
+
+        [Get("/api/Product/Search/{productName}")]
+        Task<List<SearchProductViewModel>> SearchByNameAsync(string productName);
+
     }
 }

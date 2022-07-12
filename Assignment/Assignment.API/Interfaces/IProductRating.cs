@@ -5,7 +5,7 @@ namespace Assignment.API.Interfaces
 {
     public interface IProductRating
     {
-        Task<ProductRatingViewModel> GetProductRatingByIdAsync(int Id);
+        Task<List<ProductRatingViewModel>> GetProductRatingByProductIdAsync(int Id);
         Task<int> CreateProductRatingAsync(ProductRatingCreateRequest request);
     }
 }

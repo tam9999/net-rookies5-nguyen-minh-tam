@@ -17,9 +17,9 @@ namespace Assignment.API.Controllers
 
         [HttpGet("{Id}")]
         [AllowAnonymous]
-        public async Task<IActionResult> GetProductRatingByIdAsync([FromRoute] int Id)
+        public async Task<IActionResult> GetProductRatingByProductIdAsync([FromRoute] int Id)
         {
-            var feedbacks = await productRatingService.GetProductRatingByIdAsync(Id);
+            var feedbacks = await productRatingService.GetProductRatingByProductIdAsync(Id);
             if (feedbacks == null)
             {
                 return NotFound("Comment can't be found");
@@ -36,12 +36,12 @@ namespace Assignment.API.Controllers
             {
                 return BadRequest();
             }
-            var review = await productRatingService.GetProductRatingByIdAsync(reviewId);
-            if (review == null)
-            {
-                return BadRequest();
-            }
-            return Ok(review);
+            //var review = await productRatingService.GetProductRatingByIdAsync(reviewId);
+            //if (review == null)
+            //{
+            //    return BadRequest();
+            //}
+            return Ok(reviewId);
         }
     }
 }

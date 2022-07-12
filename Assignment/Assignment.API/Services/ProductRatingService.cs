@@ -19,26 +19,27 @@ namespace Assignment.API.Services
             _mapper = mapper;
         }
 
-        public async Task<ProductRatingViewModel> GetProductRatingByIdAsync(int Id)
+        public async Task<List<ProductRatingViewModel>> GetProductRatingByProductIdAsync(int productId)
         {
-            var review = await db.ProductRatings.Where(rv => rv.Id == Id).Include(rv => rv.User).SingleOrDefaultAsync();
+            var review = await db.ProductRatings.Where(rv => rv.ProductId == productId)
+                .Include(review => review.User)
+                .Select(review => new ProductRatingViewModel()
+                {
+                    Id = review.Id,
+                    UserId = review.UserId,
+                    UserName = review.User.LastName,
+                    //Name = review.User.FirstName,
+                    ProductId = review.ProductId,
+                    Comment = review.Comment,
+                    Star = review.Start,
+                    CreatedDate = review.CreatedDate,
+                    UpdatedDate = review.UpdatedDate
+                }).ToListAsync();
             if (review == null)
             {
                 return null;
             }
-            return new ProductRatingViewModel()
-            {
-                Id = review.Id,
-                UserId = review.UserId,
-                UserName = review.User.LastName,
-                //Name = review.User.FirstName,
-                ProductId = review.ProductId,
-                Comment = review.Comment,
-                Star = review.Start,
-                CreatedDate = review.CreatedDate,
-                UpdatedDate = review.UpdatedDate
-               
-            };
+            return review;
         }
 
         public async Task<int> CreateProductRatingAsync(ProductRatingCreateRequest request)

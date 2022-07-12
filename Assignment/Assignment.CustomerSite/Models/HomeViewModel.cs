@@ -9,6 +9,8 @@ namespace Assignment.CustomerSite.Models
         public List<Product> Products;
         public ProductViewModel ProductDetail;
         public List<CategoryViewModel> CategoryDetail;
-        
+        public List<SearchProductViewModel> SearchProducts;
+        public ProductRatingViewModel ProductRating;
+        public List<ProductRatingViewModel> Comments;
     }
 }

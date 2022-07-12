@@ -48,6 +48,7 @@ namespace Assignment.API.Controllers
 
         [HttpGet("Search/{productName}")]
         //[AllowAnonymous]
+        //[Route("Search")]
         public async Task<IActionResult> SearchByNameAsync([FromRoute] string productName)
         {
             try
