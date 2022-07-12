@@ -3,6 +3,8 @@ import classnames from "classnames";
 import Header from "./Header";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./Sidebar.css";
+import Product from "../Products/Product";
+import { BrowserRouter as Router, Routes, Route} from 'react-router-dom';
 
 class Sidebar extends React.Component {
     state = {
@@ -45,8 +47,10 @@ class Sidebar extends React.Component {
                 <i class="fa fa-fw fa-home" />
                 Home
                 </a>
+                <Routes>
+                    <Route element={<Produt />}></Route>
+                </Routes>
                 <a href="#">Category</a>
-                <a href="#">Product</a>
                 <a href="#">Customer</a>
             </div>
 
