@@ -1,6 +1,7 @@
 ﻿using Assignment.API.Interfaces;
 using Assignment.Domain.Data;
 using Assignment.Domain.Entities;
+using Assignment.SharedViewModels.Requests;
 using Assignment.SharedViewModels.ViewModels;
 using AutoMapper;
 using Microsoft.EntityFrameworkCore;
@@ -15,17 +16,6 @@ namespace Assignment.API.Services
         {
             this.db = _db;
             _mapper = mapper;
-        }
-
-        public async Task<int> AddCategoryAsync(Category category)
-        {
-            if (db != null)
-            {
-                await db.Categories.AddAsync(category);
-                await db.SaveChangesAsync();
-                return category.Id;
-            }
-            return 0;
         }
 
         public async Task<int> DeleteCategoryAsync(int? categoryId)
@@ -57,18 +47,18 @@ namespace Assignment.API.Services
 
         }
 
-        //public async Task<Category> GetCategoryAsync(int? categoryId)
-        //{
-        //    if (db != null)
-        //    {
-        //        return await (from c in db.Categories
-        //                      where c.Id == categoryId
-        //                      select c
-        //                     ).FirstOrDefaultAsync();
-        //    }
+        public async Task<Category> GetCategoryAsync(int? categoryId)
+        {
+            if (db != null)
+            {
+                return await (from c in db.Categories
+                              where c.Id == categoryId
+                              select c
+                             ).FirstOrDefaultAsync();
+            }
 
-        //    return null;
-        //}
+            return null;
+        }
 
         public async Task<List<CategoryViewModel>> GetCategoryDetailAsync(int? categoryId)
         {
@@ -98,13 +88,36 @@ namespace Assignment.API.Services
             return null;
         }
 
-        public async Task UpdateCategoryAsync(Category category)
+        public async Task<int> UpdateCategoryAsync(CategoryUpdateRequest request)
         {
-            if (db != null)
+            var category = await db.Categories.FindAsync(request.Id);
+            if (category == null)
             {
-                db.Categories.Update(category);
-                await db.SaveChangesAsync();
+                throw new Exception($"Cannot find category with Id = {request.Id}");
             }
+            category.CategoryName = request.CategoryName;
+            category.Description = request.Description;
+            category.UpdatedDate = DateTime.Now;
+            return await db.SaveChangesAsync();
+
+        }
+
+        public async Task<int> AddCategoryAsync(CategoryCreateRequest request)
+        {
+            if (string.IsNullOrEmpty(request.CategoryName))
+            {
+                return 0;
+            }
+            var category = new Category()
+            {
+                CategoryName = request.CategoryName,
+                Description = request.Description,
+                CreatedDate = DateTime.Now,
+                UpdatedDate = DateTime.Now
+            };
+            await db.Categories.AddAsync(category);
+            await db.SaveChangesAsync();
+            return category.Id;
         }
     }
 }

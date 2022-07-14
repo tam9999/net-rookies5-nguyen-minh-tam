@@ -1,5 +1,6 @@
 ﻿using Assignment.API.Interfaces;
 using Assignment.Domain.Entities;
+using Assignment.SharedViewModels.Requests;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -36,36 +37,36 @@ namespace Assignment.API.Controllers
 
         }
 
-        //[HttpGet]
-        //[AllowAnonymous]
-        //[Route("GetCategories")]
-        //public async Task<IActionResult> GetCategoryAsync(int? categoryId)
-        //{
-        //    if (categoryId == null)
-        //    {
-        //        return BadRequest();
-        //    }
+        [HttpGet]
+        [AllowAnonymous]
+        [Route("GetCategoryById")]
+        public async Task<IActionResult> GetCategoryAsync(int? categoryId)
+        {
+            if (categoryId == null)
+            {
+                return BadRequest();
+            }
 
-        //    try
-        //    {
-        //        var category = await categoryService.GetCategoryAsync(categoryId);
+            try
+            {
+                var category = await categoryService.GetCategoryAsync(categoryId);
 
-        //        if (category == null)
-        //        {
-        //            return NotFound();
-        //        }
+                if (category == null)
+                {
+                    return NotFound();
+                }
 
-        //        return Ok(category);
-        //    }
-        //    catch (Exception)
-        //    {
-        //        return BadRequest();
-        //    }
-        //}
+                return Ok(category);
+            }
+            catch (Exception)
+            {
+                return BadRequest();
+            }
+        }
 
         [HttpGet("{categoryId}")]
-        [AllowAnonymous]       
-        
+        [AllowAnonymous]
+
         public async Task<IActionResult> GetCategoryDetailAsync(int? categoryId)
         {
             if (categoryId == null)
@@ -91,31 +92,23 @@ namespace Assignment.API.Controllers
 
         [HttpPost]
         [Route("AddCategory")]
-        public async Task<IActionResult> AddCategoryAsync([FromBody] Category model)
+        public async Task<IActionResult> AddCategoryAsync([FromBody] CategoryCreateRequest request)
         {
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
-                try
-                {
-                    var categoryId = await categoryService.AddCategoryAsync(model);
-                    if (categoryId > 0)
-                    {
-                        return Ok(categoryId);
-                    }
-                    else
-                    {
-                        return NotFound();
-                    }
-                }
-                catch (Exception)
-                {
-
-                    return BadRequest();
-                }
-
+                return BadRequest(ModelState);
             }
-
-            return BadRequest();
+            var categoryId = await categoryService.AddCategoryAsync(request);
+            if (categoryId == 0)
+            {
+                return BadRequest();
+            }
+            var data = await categoryService.GetCategoryAsync(categoryId);
+            if (data == null)
+            {
+                return NotFound($"Cannot find a cake with Id: {categoryId}");
+            }
+            return Ok(data); 
         }
 
         [HttpDelete]
@@ -146,30 +139,27 @@ namespace Assignment.API.Controllers
         }
 
         [HttpPut]
-        [Route("UpdateCategory")]
-        public async Task<IActionResult> UpdateCategoryAsync([FromBody] Category model)
+        public async Task<IActionResult> Update([FromBody] CategoryUpdateRequest request)
         {
-            if (ModelState.IsValid)
+            try
             {
-                try
+                if (!ModelState.IsValid)
                 {
-                    await categoryService.UpdateCategoryAsync(model);
-
-                    return Ok();
+                    return BadRequest(ModelState);
                 }
-                catch (Exception ex)
-                {
-                    if (ex.GetType().FullName ==
-                             "Microsoft.EntityFrameworkCore.DbUpdateConcurrencyException")
-                    {
-                        return NotFound();
-                    }
+                var result = await categoryService.UpdateCategoryAsync(request);
 
+                if (result == 0)
+                {
                     return BadRequest();
                 }
-            }
 
-            return BadRequest();
+                return Ok(result);
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }
         }
     } 
         
