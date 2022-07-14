@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';  
 import Table from './Table';  
 
-export default class CategoryList extends Component {  
+export default class ProductList extends Component {  
 
     constructor(props) {  
         super(props);  
@@ -10,11 +10,11 @@ export default class CategoryList extends Component {
         }  
         componentDidMount(){  
         //debugger;  
-        axios.get('https://localhost:5445/api/Categories/GetAllCategory')  
+        axios.get('https://localhost:5445/api/Product/GetAllProduct')  
             .then(response => {  
             this.setState({ business: response.data });  
             //debugger;  
-            console.log(this.state.business.map);
+
             })  
             .catch(function (error) {  
             console.log(error);  
@@ -30,12 +30,15 @@ export default class CategoryList extends Component {
         render() {  
         return (  
             <div>  
-            <h4 align="center">Category List</h4>  
+            <h4 align="center">Product List</h4>  
             <table className="table table-striped" style={{ marginTop: 10 }}>  
                 <thead>  
                 <tr>
-                    <th>Category Name</th>  
-                    <th>Description</th>  
+                    <th>Product Name</th>  
+                    <th>Price</th>
+                    <th>Quantity</th>  
+                    <th>Description</th>
+                    <th>Image</th>  
                     <th>Created Date</th>  
                     <th>Updated Date</th>  
                     <th colSpan="4">Action</th>  

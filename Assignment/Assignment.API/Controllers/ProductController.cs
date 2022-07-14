@@ -1,5 +1,6 @@
 ﻿using Assignment.API.Interfaces;
 using Assignment.Domain.Entities;
+using Assignment.SharedViewModels.Requests;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -118,31 +119,19 @@ namespace Assignment.API.Controllers
 
         [HttpPost]
         [Route("AddProduct")]
-        public async Task<IActionResult> AddProductAsync([FromBody] Product model)
+        public async Task<IActionResult> AddProductAsync([FromBody] ProductCreateRequest request)
         {
-            if (ModelState.IsValid)
+            var productId = await productService.AddProductAsync(request);
+            if (productId == null)
             {
-                try
-                {
-                    var productId = await productService.AddProductAsync(model);
-                    if (productId > 0)
-                    {
-                        return Ok(productId);
-                    }
-                    else
-                    {
-                        return NotFound();
-                    }
-                }
-                catch (Exception)
-                {
-
-                    return BadRequest();
-                }
-
+                return BadRequest();
             }
-
-            return BadRequest();
+            var result = await productService.GetProductByIdAsync(productId);
+            if (result == null)
+            {
+                return NotFound($"Cannot find a product with Id: {productId}");
+            }
+            return Ok(result);
         }
 
         [HttpDelete]
@@ -174,29 +163,25 @@ namespace Assignment.API.Controllers
 
         [HttpPut]
         [Route("UpdateProduct")]
-        public async Task<IActionResult> UpdateProductAsync([FromBody] Product model)
+        public async Task<IActionResult> UpdateProductAsync([FromBody] ProductUpdateRequest request)
         {
-            if (ModelState.IsValid)
+            try
             {
-                try
+                if (!ModelState.IsValid)
                 {
-                    await productService.UpdateProductAsync(model);
-
-                    return Ok();
+                    return BadRequest(ModelState);
                 }
-                catch (Exception ex)
+                var result = await productService.UpdateProductAsync(request);
+                if (result == 0)
                 {
-                    if (ex.GetType().FullName ==
-                             "Microsoft.EntityFrameworkCore.DbUpdateConcurrencyException")
-                    {
-                        return NotFound();
-                    }
-
                     return BadRequest();
                 }
+                return Ok(result);
             }
-
-            return BadRequest();
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }
         }
     }
 }

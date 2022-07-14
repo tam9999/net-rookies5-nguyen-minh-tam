@@ -32,7 +32,6 @@ class EditCategory extends React.Component {
                     description: response.data.description,  
                     createdDate: response.data.createdDate,  
                     updatedDate: response.data.updatedDate });  
-                    console.log()
                 })  
                 .catch(function (error) {  
                     console.log(error);  
