@@ -126,7 +126,72 @@
 				
 			</div>
 		</div>
+       @* <div class="register-container vh-100 d-flex justify-content-center align-items-center">
+        <div class="register-container-box border d-flex justify-content-center align-items-center bg-dark">
+            <form asp-action="Register">
+                <div class="text-center mb-3">
+                    <i class="fa-solid fa-book-journal-whills fa-2xl text-danger mb-4"></i>
+                    <h3 class="fw-bold text-light">REGISTER</h3>
+                </div>
 
+                <!-- Email input -->
+                <div class="form-outline mb-4">
+                    <input asp-for="Email" type="text" class="text-light form-control" />
+                    <label asp-for="Email" class="text-light form-label">Email</label>
+                </div>
+                <!-- Email input -->
+                
+
+                <!-- Password input -->
+                <div class="form-outline mb-4">
+                    <input asp-for="Password" type="password" class="text-light form-control" />
+                    <label asp-for="Password" class="text-light form-label">Password</label>
+                </div>
+                <!-- Password input -->
+                
+                <hr class="border border-light text-light"/>
+
+                <!-- Name input -->
+                <div class="form-outline mb-4">
+                    <input asp-for="FirstName" type="text" class="text-light form-control" />
+                    <label asp-for="FirstName" class="text-light form-label">FirstName</label>
+                </div>
+                <!-- Name input -->
+
+                <!-- Username input -->
+                <div class="form-outline mb-4">
+                    <input asp-for="LastName" type="text" class="text-light form-control" />
+                    <label asp-for="LastName" class="text-light form-label">LastName</label>
+                </div>
+                <!-- Username input -->
+                
+                <!-- Phone input -->
+                <div class="form-outline mb-4">
+                    <input asp-for="Phone" type="number" class="text-light form-control" />
+                    <label asp-for="Phone" class="text-light form-label">Phone</label>
+                </div>
+                <!-- Phone input -->
+
+                <!-- Address input -->
+                <div class="form-outline mb-4">
+                    <input asp-for="Address" type="text" class="text-light form-control" />
+                    <label asp-for="Address" class="text-light form-label">Address</label>
+                </div>
+                <!-- Address input -->
+
+                <!-- Submit button -->
+                <button type="submit" class="btn btn-danger btn-block mb-4">Register</button>
+                <!-- Submit button -->
+
+                <!-- Login redirect -->
+                <div class="text-center">
+                    <p class="m-0 text-light">Already a member? <a asp-action="Login" class="text-danger">Login</a></p>
+                </div>
+                <!-- Login redirect -->
+
+            </form>
+        </div>
+    </div>*@
 <!-- smooth scrolling -->
 	<script type="text/javascript">
 		$(document).ready(function() {

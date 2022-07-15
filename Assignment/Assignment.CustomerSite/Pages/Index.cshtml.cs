@@ -29,7 +29,7 @@ namespace Assignment.CustomerSite.Pages
         {
             var categories = _category.GetAllCategoryAsync().GetAwaiter().GetResult();
 
-            var products = _product.GetAllProductAsync().GetAwaiter().GetResult();
+            var products = await _product.GetAllProductAsync();
 
             _home.Products = products;
             _home.Categories = categories;

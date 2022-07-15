@@ -206,7 +206,7 @@
                             </div>
                         </div>
                         <div class="col-md-7 span-1 ">
-                            <h3>@item.ProductName</h3>
+                            <h3>@item.Name</h3>
                             <br />
                             <div class="price_single">
                                 <span class="reducedfrom ">@String.Format(format, "{0:c0}", @item.Price )</span>
@@ -216,7 +216,7 @@
                             <h4 class="quick">Mô tả về sản phẩm:</h4>
                             <p class="quick_desc">@item.Description</p>
                             <div class="add-to">
-                                <button class="btn btn-danger my-cart-btn my-cart-btn1 " data-id="@item.Id" data-name="@item.ProductName" data-summary="summary 1" data-price="@String.Format(format, "{0:c0}", @item.Price)" data-quantity="1" data-image="images/@item.Image">Add to Cart</button>
+                                <button class="btn btn-danger my-cart-btn my-cart-btn1 " data-id="@item.Id" data-name="@item.Name" data-summary="summary 1" data-price="@String.Format(format, "{0:c0}", @item.Price)" data-quantity="1" data-image="images/@item.Image">Add to Cart</button>
                             </div>
                         </div>
                         <div class="clearfix"> </div>

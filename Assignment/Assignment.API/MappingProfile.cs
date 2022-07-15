@@ -8,6 +8,10 @@ namespace Assignment.API
         public MappingProfile()
         {
             CreateMap<Product, ProductViewModel>();
+            CreateMap<Image, ImageViewModel>();
+            CreateMap<ImageViewModel, Image>()
+                .ForMember(dest => dest.Id, o => o.Ignore())
+                .ForMember(dest => dest.IsDeleted, o => o.Ignore());
         }
     }
 }

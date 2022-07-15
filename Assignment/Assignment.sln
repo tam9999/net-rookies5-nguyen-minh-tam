@@ -11,7 +11,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Assignment.SharedViewModels
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Assignment.CustomerSite", "Assignment.CustomerSite\Assignment.CustomerSite.csproj", "{88352EA4-7644-4C21-970C-3944A8BC0EDE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assignment.AdminSites", "Assignment.AdminSites\Assignment.AdminSites.csproj", "{1B33075E-E26C-465A-B6E1-5C3E105DB99D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Assignment.AdminSites", "Assignment.AdminSites\Assignment.AdminSites.csproj", "{1B33075E-E26C-465A-B6E1-5C3E105DB99D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

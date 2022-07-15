@@ -29,7 +29,7 @@ namespace Assignment.Domain.Data
         public virtual DbSet<Status> Statuses { get; set; }
         public virtual DbSet<RefreshToken> RefreshTokens { get; set; }
         public virtual DbSet<User> Users { get; set; }
-
+        public virtual DbSet<Image> Images { get; set; }
         protected override void OnConfiguring(DbContextOptionsBuilder opitionsBuilder)
         {
             base.OnConfiguring(opitionsBuilder);

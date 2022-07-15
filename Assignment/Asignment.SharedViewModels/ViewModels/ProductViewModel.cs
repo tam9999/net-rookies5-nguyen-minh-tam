@@ -20,6 +20,6 @@ namespace Assignment.SharedViewModels.ViewModels
         public int Qty { get; set; }
         public DateTime CreatedDate { get; set; }
         public DateTime UpdatedDate { get; set; }
-
+        public int? ImageId { get; set; }
     }
 }

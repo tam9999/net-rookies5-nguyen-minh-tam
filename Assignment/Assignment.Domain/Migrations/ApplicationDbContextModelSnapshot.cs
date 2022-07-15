@@ -52,12 +52,39 @@ namespace Assignment.Domain.Migrations
                     b.Property<DateTime>("UpdatedDate")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("smalldatetime")
-                        .HasDefaultValue(new DateTime(2022, 6, 29, 7, 32, 0, 599, DateTimeKind.Local).AddTicks(1403))
+                        .HasDefaultValue(new DateTime(2022, 7, 15, 9, 29, 55, 193, DateTimeKind.Local).AddTicks(3336))
                         .HasColumnName("UpdatedDate");
 
                     b.HasKey("Id");
 
                     b.ToTable("Category", (string)null);
+                });
+
+            modelBuilder.Entity("Assignment.Domain.Entities.Image", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<string>("ImageName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ImageURL")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<int>("ProductId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ProductId");
+
+                    b.ToTable("Images");
                 });
 
             modelBuilder.Entity("Assignment.Domain.Entities.Order", b =>
@@ -114,7 +141,7 @@ namespace Assignment.Domain.Migrations
                     b.Property<DateTime>("UpdatedDate")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("smalldatetime")
-                        .HasDefaultValue(new DateTime(2022, 6, 29, 7, 32, 0, 599, DateTimeKind.Local).AddTicks(3151))
+                        .HasDefaultValue(new DateTime(2022, 7, 15, 9, 29, 55, 193, DateTimeKind.Local).AddTicks(5009))
                         .HasColumnName("UpdatedDate");
 
                     b.Property<int>("UserId")
@@ -145,7 +172,7 @@ namespace Assignment.Domain.Migrations
                     b.Property<DateTime>("UpdatedDate")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("smalldatetime")
-                        .HasDefaultValue(new DateTime(2022, 6, 29, 7, 32, 0, 599, DateTimeKind.Local).AddTicks(3959))
+                        .HasDefaultValue(new DateTime(2022, 7, 15, 9, 29, 55, 193, DateTimeKind.Local).AddTicks(5855))
                         .HasColumnName("UpdatedDate");
 
                     b.Property<int>("UserId")
@@ -186,6 +213,9 @@ namespace Assignment.Domain.Migrations
                         .HasMaxLength(255)
                         .HasColumnType("nvarchar(255)");
 
+                    b.Property<int>("ImageId")
+                        .HasColumnType("int");
+
                     b.Property<bool>("IsDeleted")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("bit")
@@ -210,7 +240,7 @@ namespace Assignment.Domain.Migrations
                     b.Property<DateTime>("UpdatedDate")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("smalldatetime")
-                        .HasDefaultValue(new DateTime(2022, 6, 29, 7, 32, 0, 599, DateTimeKind.Local).AddTicks(6236))
+                        .HasDefaultValue(new DateTime(2022, 7, 15, 9, 29, 55, 193, DateTimeKind.Local).AddTicks(7881))
                         .HasColumnName("UpdatedDate");
 
                     b.HasKey("Id");
@@ -252,7 +282,7 @@ namespace Assignment.Domain.Migrations
                     b.Property<DateTime>("UpdatedDate")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("smalldatetime")
-                        .HasDefaultValue(new DateTime(2022, 6, 29, 7, 32, 0, 599, DateTimeKind.Local).AddTicks(5033))
+                        .HasDefaultValue(new DateTime(2022, 7, 15, 9, 29, 55, 193, DateTimeKind.Local).AddTicks(6688))
                         .HasColumnName("UpdatedDate");
 
                     b.Property<int>("UserId")
@@ -399,7 +429,7 @@ namespace Assignment.Domain.Migrations
                     b.Property<DateTime>("UpdatedDate")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("smalldatetime")
-                        .HasDefaultValue(new DateTime(2022, 6, 29, 7, 32, 0, 600, DateTimeKind.Local).AddTicks(380))
+                        .HasDefaultValue(new DateTime(2022, 7, 15, 9, 29, 55, 194, DateTimeKind.Local).AddTicks(1960))
                         .HasColumnName("UpdatedDate");
 
                     b.HasKey("Id");
@@ -407,6 +437,17 @@ namespace Assignment.Domain.Migrations
                     b.HasIndex("RoleId");
 
                     b.ToTable("User", (string)null);
+                });
+
+            modelBuilder.Entity("Assignment.Domain.Entities.Image", b =>
+                {
+                    b.HasOne("Assignment.Domain.Entities.Product", "Product")
+                        .WithMany("Images")
+                        .HasForeignKey("ProductId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Product");
                 });
 
             modelBuilder.Entity("Assignment.Domain.Entities.Order", b =>
@@ -514,6 +555,8 @@ namespace Assignment.Domain.Migrations
 
             modelBuilder.Entity("Assignment.Domain.Entities.Product", b =>
                 {
+                    b.Navigation("Images");
+
                     b.Navigation("Orders");
 
                     b.Navigation("ProductRatings");
