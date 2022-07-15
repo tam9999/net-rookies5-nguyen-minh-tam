@@ -29,12 +29,22 @@ namespace Assignment.API.Services
             return await db.Images.FirstOrDefaultAsync(image => image.Id == id);
         }
 
-        public async Task<Image> PostAsync(Image image)
+        public Task<Product> PostAsync(Product image)
         {
-            await db.Images.AddAsync(image);
-            await db.SaveChangesAsync();
-            return image;
+            throw new NotImplementedException();
         }
+
+        //public async Task<Product> PostAsync(string image)
+        //{
+        //    await db.Products.AddAsync(image);
+        //    await db.SaveChangesAsync();
+        //    return image;
+        //}
+
+        //public Task<Product> PostAsync(string image)
+        //{
+        //    throw new NotImplementedException();
+        //}
 
         public async Task<Image> PutAsync(int id, Image image)
         {

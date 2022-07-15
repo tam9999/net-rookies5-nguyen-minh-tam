@@ -9,7 +9,7 @@ namespace Assignment.Domain.Entities
     public class Image
     {
         public int Id { get; set; }
-        public int ProductId { get; set; }
+        //public int ProductId { get; set; }
         public string ImageURL { get; set; }
         public string ImageName { get; set; }
         public bool IsDeleted { get; set; }

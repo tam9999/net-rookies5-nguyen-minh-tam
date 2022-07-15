@@ -22,6 +22,6 @@ namespace Assignment.SharedViewModels.Requests
         public string Image { get; set; }
         public DateTime CreatedDate { get; set; }
         public DateTime UpdatedDate { get; set; }
-        public int ImageId { get; set; }
+        public int? ImageId { get; set; }
     }
 }

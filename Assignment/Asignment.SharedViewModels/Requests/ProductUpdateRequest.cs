@@ -23,7 +23,8 @@ namespace Assignment.SharedViewModels.Requests
 
         [Display(Name = "Product Price Description")]
         public string Description { get; set; }
-
+        
         public DateTime UpdatedDate { get; set; }
+        public int ImageId { get; set; }
     }
 }

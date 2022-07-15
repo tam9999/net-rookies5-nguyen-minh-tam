@@ -13,19 +13,22 @@ constructor(props){
         createdDate:'', 
         updatedDate:'' ,
         image:'',
+        imageId:'0',
         categories: [] 
     }  
 }   
 
 AddProduct=()=>{  
     debugger;
+    //them hinh => idimage
     axios.post('https://localhost:5445/api/Product/AddProduct', {
         categoryId:this.state.categoryId,
         productName:this.state.productName,
         description:this.state.description,
         price:this.state.price,
         qty:this.state.qty,
-        image:this.state.image
+        image:this.state.image,
+        imageId:'0',
         
     })  
     .then(json => {  
@@ -38,6 +41,7 @@ AddProduct=()=>{
         alert('Data not Saved!'); 
         }  
     })  
+    console.log(this.props);
 }  
 
 componentDidMount =()=>{  
@@ -58,7 +62,7 @@ render() {
 return (  
     <Container className="App">  
         <h4 className="PageHeading">Enter New Product</h4>  
-        <Form className="form" validation>  
+        <Form className="form">  
         <Col>  
             
             <FormGroup row>

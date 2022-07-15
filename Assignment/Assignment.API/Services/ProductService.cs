@@ -125,7 +125,7 @@ namespace Assignment.API.Services
             product.CategoryId = request.CategoryId;
             product.Image = request.Image;
             product.UpdatedDate = DateTime.Now;
-
+            product.ImageId = request.ImageId;
             return await db.SaveChangesAsync();
         }
 
@@ -142,6 +142,7 @@ namespace Assignment.API.Services
                 Price = request.Price,
                 Qty = request.Qty,
                 Image = request.Image,
+                ImageId = request.ImageId,
                 Description = request.Description,
                 CategoryId = request.CategoryId,
                 CreatedDate = DateTime.Now,
@@ -164,8 +165,8 @@ namespace Assignment.API.Services
                 CreatedDate = product.CreatedDate,
                 UpdatedDate = product.UpdatedDate,
                 CategoryId = product.CategoryId,
-                Image = product.Image
-
+                Image = product.Image,
+                ImageId = product.ImageId
             }).ToListAsync();
         }
 
