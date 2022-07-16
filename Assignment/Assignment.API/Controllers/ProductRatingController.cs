@@ -2,6 +2,7 @@
 using Assignment.SharedViewModels.Requests;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 
 namespace Assignment.API.Controllers
 {
@@ -19,29 +20,44 @@ namespace Assignment.API.Controllers
         [AllowAnonymous]
         public async Task<IActionResult> GetProductRatingByProductIdAsync([FromRoute] int Id)
         {
-            var feedbacks = await productRatingService.GetProductRatingByProductIdAsync(Id);
-            if (feedbacks == null)
+            try
             {
-                return NotFound("Comment can't be found");
+                var feedbacks = await productRatingService.GetProductRatingByProductIdAsync(Id);
+                if (feedbacks == null)
+                {
+                    return NotFound("Comment can't be found");
+                }
+                return Ok(feedbacks);
             }
-            return Ok(feedbacks);
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }
+
         }
 
         [HttpPost]
         [AllowAnonymous]
         public async Task<IActionResult> CreateProductRatingAsync([FromBody] ProductRatingCreateRequest request)
         {
-            var reviewId = await productRatingService.CreateProductRatingAsync(request);
-            if (reviewId == 0)
+            try
             {
-                return BadRequest();
+                if (!ModelState.IsValid)
+                {
+                    return BadRequest(ModelState);
+                }
+                var reviewId = await productRatingService.CreateProductRatingAsync(request);
+                if (reviewId == 0)
+                {
+                    return BadRequest();
+                }
+
+                return Ok(reviewId);
             }
-            //var review = await productRatingService.GetProductRatingByIdAsync(reviewId);
-            //if (review == null)
-            //{
-            //    return BadRequest();
-            //}
-            return Ok(reviewId);
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }
         }
     }
 }

@@ -13,6 +13,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Assignment.CustomerSite", "
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Assignment.AdminSites", "Assignment.AdminSites\Assignment.AdminSites.csproj", "{1B33075E-E26C-465A-B6E1-5C3E105DB99D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assignment.API.Test", "Assignment.API.Test\Assignment.API.Test.csproj", "{D43B0E9F-39DA-4BD0-8745-B2BB20B49F4E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{1B33075E-E26C-465A-B6E1-5C3E105DB99D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1B33075E-E26C-465A-B6E1-5C3E105DB99D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1B33075E-E26C-465A-B6E1-5C3E105DB99D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D43B0E9F-39DA-4BD0-8745-B2BB20B49F4E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D43B0E9F-39DA-4BD0-8745-B2BB20B49F4E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D43B0E9F-39DA-4BD0-8745-B2BB20B49F4E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D43B0E9F-39DA-4BD0-8745-B2BB20B49F4E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

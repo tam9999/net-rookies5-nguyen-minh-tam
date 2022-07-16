@@ -3,6 +3,7 @@ using Assignment.Domain.Entities;
 using Assignment.SharedViewModels.Requests;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 
 namespace Assignment.API.Controllers
 {
@@ -30,9 +31,9 @@ namespace Assignment.API.Controllers
 
                 return Ok(categories);
             }
-            catch (Exception)
+            catch (Exception e)
             {
-                return BadRequest();
+                return BadRequest(e.Message);
             }
 
         }
@@ -58,9 +59,9 @@ namespace Assignment.API.Controllers
 
                 return Ok(category);
             }
-            catch (Exception)
+            catch (Exception e)
             {
-                return BadRequest();
+                return BadRequest(e.Message);
             }
         }
 
@@ -90,25 +91,33 @@ namespace Assignment.API.Controllers
             }
         }
 
+        //[Authorize]
         [HttpPost]
         [Route("AddCategory")]
         public async Task<IActionResult> AddCategoryAsync([FromBody] CategoryCreateRequest request)
         {
-            if (!ModelState.IsValid)
+            try
             {
-                return BadRequest(ModelState);
+                if (!ModelState.IsValid)
+                {
+                    return BadRequest(ModelState);
+                }
+                var categoryId = await categoryService.AddCategoryAsync(request);
+                if (categoryId == 0)
+                {
+                    return BadRequest();
+                }
+                var data = await categoryService.GetCategoryAsync(categoryId);
+                if (data == null)
+                {
+                    return NotFound($"Cannot find a cake with Id: {categoryId}");
+                }
+                return Ok(JsonConvert.SerializeObject(data));
             }
-            var categoryId = await categoryService.AddCategoryAsync(request);
-            if (categoryId == 0)
+            catch (Exception e)
             {
-                return BadRequest();
+                return BadRequest(e.Message);
             }
-            var data = await categoryService.GetCategoryAsync(categoryId);
-            if (data == null)
-            {
-                return NotFound($"Cannot find a cake with Id: {categoryId}");
-            }
-            return Ok(data); 
         }
 
         [HttpDelete]
@@ -127,14 +136,13 @@ namespace Assignment.API.Controllers
                 result = await categoryService.DeleteCategoryAsync(categoryId);
                 if (result == 0)
                 {
-                    return NotFound();
+                    return NotFound($"Cannot find a cake with Id: {categoryId}");
                 }
-                return Ok();
+                return Ok(result);
             }
-            catch (Exception)
+            catch (Exception e)
             {
-
-                return BadRequest();
+                return BadRequest(e.Message);
             }
         }
 
@@ -154,7 +162,12 @@ namespace Assignment.API.Controllers
                     return BadRequest();
                 }
 
-                return Ok(result);
+                var data = await categoryService.GetCategoryAsync(request.Id);
+                if (data == null)
+                {
+                    return NotFound($"Cannot find a cake with Id: {request.Id}");
+                }
+                return Ok(JsonConvert.SerializeObject(data));
             }
             catch (Exception e)
             {

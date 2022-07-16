@@ -3,6 +3,7 @@ using Assignment.Domain.Entities;
 using Assignment.SharedViewModels.Requests;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 
 namespace Assignment.API.Controllers
 {
@@ -26,14 +27,14 @@ namespace Assignment.API.Controllers
                 var product = await productService.GetAllProductAsync();
                 if (product == null)
                 {
-                    return NotFound();
+                    return NotFound($"Product empty");
                 }
 
                 return Ok(product);
             }
-            catch (Exception)
+            catch (Exception e)
             {
-                return BadRequest();
+                return BadRequest(e.Message);
             }
 
         }
@@ -79,14 +80,14 @@ namespace Assignment.API.Controllers
 
                 if (product == null)
                 {
-                    return NotFound();
+                    return NotFound($"Cannot find a product with Id: {Id}");
                 }
 
                 return Ok(product);
             }
-            catch (Exception)
+            catch (Exception e)
             {
-                return BadRequest();
+                return BadRequest(e.Message);
             }
         }
 
@@ -121,17 +122,28 @@ namespace Assignment.API.Controllers
         [Route("AddProduct")]
         public async Task<IActionResult> AddProductAsync([FromBody] ProductCreateRequest request)
         {
-            var productId = await productService.AddProductAsync(request);
-            if (productId == null)
+            try
             {
-                return BadRequest();
+                if (!ModelState.IsValid)
+                {
+                    return BadRequest(ModelState);
+                }
+                var productId = await productService.AddProductAsync(request);
+                if (productId == null)
+                {
+                    return BadRequest();
+                }
+                var result = await productService.GetProductByIdAsync(productId);
+                if (result == null)
+                {
+                    return NotFound($"Cannot find a product with Id: {productId}");
+                }
+                return Ok(result);
             }
-            var result = await productService.GetProductByIdAsync(productId);
-            if (result == null)
+            catch (Exception e)
             {
-                return NotFound($"Cannot find a product with Id: {productId}");
+                return BadRequest(e.Message);
             }
-            return Ok(result);
         }
 
         [HttpDelete]
@@ -150,14 +162,13 @@ namespace Assignment.API.Controllers
                 result = await productService.DeleteProductAsync(productId);
                 if (result == 0)
                 {
-                    return NotFound();
+                    return NotFound($"Cannot find a cake with Id: {productId}");
                 }
-                return Ok();
+                return Ok(JsonConvert.SerializeObject(result));
             }
-            catch (Exception)
+            catch (Exception e)
             {
-
-                return BadRequest();
+                return BadRequest(e.Message);
             }
         }
 
@@ -176,7 +187,13 @@ namespace Assignment.API.Controllers
                 {
                     return BadRequest();
                 }
-                return Ok(result);
+                var data = await productService.GetProductByIdAsync(request.Id);
+                if (data == null)
+                {
+                    return NotFound($"Cannot find a product with Id: {request.Id}");
+                }
+                return Ok(JsonConvert.SerializeObject(data));
+                
             }
             catch (Exception e)
             {
