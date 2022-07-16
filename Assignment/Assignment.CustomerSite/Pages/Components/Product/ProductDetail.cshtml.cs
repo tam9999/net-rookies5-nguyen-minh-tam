@@ -49,7 +49,7 @@ namespace Assignment.CustomerSite.Pages.Components.Product
             await _productRating.CreateProductRatingAsync(request);
             
             return Page();
-            //return RedirectToPage("./Index");
+            //return RedirectToAction("./Index");
         }
 
     }

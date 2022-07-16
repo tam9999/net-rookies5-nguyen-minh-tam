@@ -14,28 +14,28 @@ namespace Assignment.API.Test
     public class TestProductRatingController
     {
         //Get Product Rating
-        [Fact]
-        public async void GetProductRatingByProductIdAsync_ReturnsOk()
-        {
-            var mockData = new ProductRatingViewModel()
-            {
-                Id = 1,
-                UserId = 1,
-                UserName = "Nguyen Minh Tam",
-                ProductId = 1,
-                Comment = "Ngonnnnn",
-                Star = 5,
-                CreatedDate = DateTime.Now,
-                UpdatedDate = DateTime.Now,
-            };
-            var mockReviewService = new MockProductRating().MockGetProductRatingByProductIdAsync(mockData);
-            var controller = new ProductRatingController( mockReviewService.Object);
+        //[Fact]
+        //public async void GetProductRatingByProductIdAsync_ReturnsOk()
+        //{
+        //    var mockData = new ProductRatingViewModel()
+        //    {
+        //        Id = 1,
+        //        UserId = 1,
+        //        UserName = "Nguyen Minh Tam",
+        //        ProductId = 1,
+        //        Comment = "Ngonnnnn",
+        //        Star = 5,
+        //        CreatedDate = DateTime.Now,
+        //        UpdatedDate = DateTime.Now,
+        //    };
+        //    var mockReviewService = new MockProductRating().MockGetProductRatingByProductIdAsync(mockData);
+        //    var controller = new ProductRatingController( mockReviewService.Object);
 
-            var result = await controller.GetProductRatingByProductIdAsync(1) as OkObjectResult;
+        //    var result = await controller.GetProductRatingByProductIdAsync(1) as OkObjectResult;
 
-            Assert.IsType<OkObjectResult>(result);
-            Assert.Equal(200, result.StatusCode);
-        }
+        //    Assert.IsType<OkObjectResult>(result);
+        //    Assert.Equal(200, result.StatusCode);
+        //}
 
         [Fact]
         public async void GetProductRatingByProductIdAsync_ReturnsBadRequest()
