@@ -1,4 +1,4 @@
-# NashTech Internship The Rookies 5 net-rookies5-nguyen-minh-tam
+# NashTech Internship The Rookies 5 Web E-commerce
 Week 1: https://drive.google.com/file/d/1sfeWkEySLraq35YjKKqLeNmCvL23WCx8/view?usp=sharing
 
 Week 2: https://drive.google.com/file/d/1n7NysyMohJoskdI2tEsa97EVOpN7dhpC/view?usp=sharing
