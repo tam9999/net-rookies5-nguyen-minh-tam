@@ -132,34 +132,5 @@ namespace Assignment.API.Controllers
             return Ok();
         }
 
-        [Authorize]
-        [HttpPut]
-        [Route("UpdateUser")]
-        public async Task<IActionResult> UpdateProduct([FromBody] User model)
-        {
-            //if (ModelState.IsValid)
-            //{
-            //    try
-            //    {
-            //        await userService.UpdateUser(model);
-
-            //        return Ok();
-            //    }
-            //    catch (Exception ex)
-            //    {
-            //        if (ex.GetType().FullName ==
-            //                 "Microsoft.EntityFrameworkCore.DbUpdateConcurrencyException")
-            //        {
-            //            return NotFound();
-            //        }
-
-            //        return BadRequest();
-            //    }
-            //}
-            //hash password assssssssssssssss
-
-            throw new NotImplementedException();
-            //return BadRequest();
-        }
     }
 }

@@ -25,11 +25,17 @@ namespace Assignment.CustomerSite.Pages.Components.Product
             _home = new HomeViewModel();
         }
 
+        public int TotalItem { get; set; }
+        [BindProperty(SupportsGet = true)]
+        public int CurrentPage { get; set; } = 1;
+        public double NumberPage { get; set; }
+        public int? PageSize { get; set; } = 4;
+
         public async Task<IActionResult> OnGetAsync(int productId)
         {
             var categories = _category.GetAllCategoryAsync().GetAwaiter().GetResult();
-            var products = _product.GetAllProductAsync().GetAwaiter().GetResult();
-            var productViewModel = await _product.GetProductDetailAsync(productId);
+            var products = _product.GetAllProductAsync(CurrentPage, PageSize).GetAwaiter().GetResult();
+            var productViewModel = _product.GetProductDetailAsync(productId).GetAwaiter().GetResult();
             var comment = await _productRating.GetProductRatingByIdAsync(productId);
 
             _home.Comments = comment;

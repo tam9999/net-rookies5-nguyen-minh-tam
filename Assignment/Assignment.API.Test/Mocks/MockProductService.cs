@@ -13,17 +13,17 @@ namespace Assignment.API.Test.Mocks
     public class MockProductService : Mock<IProductService>
     {
         //Get All Product
-        public MockProductService MockGetAllProductAsync(List<ProductViewModel> result)
-        {
-            Setup(x => x.GetAllProductAsync()).ReturnsAsync(result);
-            return this;
-        }
+        //public MockProductService MockGetAllProductAsync(List<ProductViewModel> result)
+        //{
+        //    Setup(x => x.GetAllProductAsync()).ReturnsAsync(result);
+        //    return this;
+        //}
 
-        public MockProductService MockGetAllProductAsync_ThrowException()
-        {
-            Setup(x => x.GetAllProductAsync()).Throws(new Exception());
-            return this;
-        }
+        //public MockProductService MockGetAllProductAsync_ThrowException()
+        //{
+        //    Setup(x => x.GetAllProductAsync()).Throws(new Exception());
+        //    return this;
+        //}
         //Get Product By Id
         public MockProductService MockGetProductByIdAsync(ProductViewModel result)
         {

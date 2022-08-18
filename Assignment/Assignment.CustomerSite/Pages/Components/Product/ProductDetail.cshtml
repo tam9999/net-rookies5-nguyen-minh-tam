@@ -155,14 +155,7 @@
 				<div id="picture-frame">
 					<img src="~/images/@Model._home.ProductDetail.Image" data-src="~/images/@Model._home.ProductDetail.Image" alt="" class="img-responsive"/>
 				</div>
-				<script src="~/js/jquery.zoomtoo.js"></script>
-				<script>
-					$(function() {
-						$("#picture-frame").zoomToo({
-							magnify: 1
-						});
-					});
-				</script>
+
 		
 			</div>
 			</div>
@@ -275,7 +268,7 @@
 		<div class=" con-w3l wthree-of">
             @foreach(var category in Model._home.Categories)
             {
-                @foreach(var item in Model._home.Products)
+                @foreach(var item in Model._home.Products.Products)
                 {
                     if(category.Id == @Model._home.ProductDetail.CategoryId )
 			        {
@@ -310,11 +303,19 @@
 				  
                 }
             }
-           
-            
-						
+				
 			<div class="clearfix"></div>
 			</div>
+            <div>
+                <ul class="pagination">
+                    @for (var i = 1; i <= Model._home.Products.NumberPage; i++)
+                    {
+                        <li class="page-item @(i == Model._home.Products.CurrentPage ? "active" : "")">
+                            <a asp-page="Index" asp-route-currentpage="@i" class="page-link">@i</a>
+                        </li>
+                    }
+                </ul>
+            </div>
 		</div>
 	</div>
 
@@ -327,52 +328,52 @@
 	<a href="#" id="toTop" style="display: block;"> <span id="toTopHover" style="opacity: 1;"> </span></a>
 <!-- //smooth scrolling -->
 <!-- for bootstrap working -->
-		<script src="~/js/bootstrap.js"></script>
+<script src="@Url.Content("~/js/bootstrap.js")"></script>
 <!-- //for bootstrap working -->
-<script type='text/javascript' src="~/js/jquery.mycart.js"></script>
-  <script type="text/javascript">
-  $(function () {
+<script type='text/javascript' src="@Url.Content("~/js/jquery.mycart.js")"></script>
+<script type="text/javascript">
+    $(function () {
 
-    var goToCartIcon = function($addTocartBtn){
-      var $cartIcon = $(".my-cart-icon");
-      var $image = $('<img width="30px" height="30px" src="' + $addTocartBtn.data("image") + '"/>').css({"position": "fixed", "z-index": "999"});
-      $addTocartBtn.prepend($image);
-      var position = $cartIcon.position();
-      $image.animate({
-        top: position.top,
-        left: position.left
-      }, 500 , "linear", function() {
-        $image.remove();
-      });
-    }
+        var goToCartIcon = function ($addTocartBtn) {
+            var $cartIcon = $(".my-cart-icon");
+            var $image = $('<img width="30px" height="30px" src="' + $addTocartBtn.data("image") + '"/>').css({ "position": "fixed", "z-index": "999" });
+            $addTocartBtn.prepend($image);
+            var position = $cartIcon.position();
+            $image.animate({
+                top: position.top,
+                left: position.left
+            }, 500, "linear", function () {
+                $image.remove();
+            });
+        }
 
-    $('.my-cart-btn').myCart({
-      classCartIcon: 'my-cart-icon',
-      classCartBadge: 'my-cart-badge',
-      affixCartIcon: true,
-      checkoutCart: function(products) {
-        $.each(products, function(){
-          console.log(this);
+        $('.my-cart-btn').myCart({
+            classCartIcon: 'my-cart-icon',
+            classCartBadge: 'my-cart-badge',
+            affixCartIcon: true,
+            checkoutCart: function (products) {
+                $.each(products, function () {
+                    console.log(this);
+                });
+            },
+            clickOnAddToCart: function ($addTocart) {
+                goToCartIcon($addTocart);
+            },
+            getDiscountPrice: function (products) {
+                var total = 0;
+                $.each(products, function () {
+                    total += this.quantity * this.price;
+                });
+                return total * 1;
+            }
         });
-      },
-      clickOnAddToCart: function($addTocart){
-        goToCartIcon($addTocart);
-      },
-      getDiscountPrice: function(products) {
-        var total = 0;
-        $.each(products, function(){
-          total += this.quantity * this.price;
-        });
-        return total * 1;
-      }
+
     });
-
-  });
-  </script>
+</script>
 
 
     <!-- product -->
-    @foreach (var item in Model._home.Products)
+    @foreach (var item in Model._home.Products.Products)
     {
         <div class="modal fade" id="@item.Id" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
             <div class="modal-dialog" role="document">
@@ -405,7 +406,16 @@
                 </div>
             </div>
         </div>
-    }	
+    }
 </body>
-
+@section Scripts{
+            <script src="~/js/jquery.zoomtoo.js"></script>
+			<script>
+				$(function() {
+					$("#picture-frame").zoomToo({
+						magnify: 1
+					});
+				});
+			</script>
+        }
 </html>

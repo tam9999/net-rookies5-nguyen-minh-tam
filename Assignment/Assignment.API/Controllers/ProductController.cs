@@ -1,8 +1,10 @@
 ﻿using Assignment.API.Interfaces;
+using Assignment.API.Services;
 using Assignment.Domain.Entities;
 using Assignment.SharedViewModels.Requests;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.RazorPages;
 using Newtonsoft.Json;
 
 namespace Assignment.API.Controllers
@@ -18,24 +20,13 @@ namespace Assignment.API.Controllers
         }
 
         [HttpGet]
-        [Route("GetAllProduct")]
+        [Route("GetAllProduct/{page}/{pageSize}")]
         //[AllowAnonymous]
-        public async Task<IActionResult> GetAllProductAsync()
+        public async Task<IActionResult> GetAllProductAsync(int? page, int? pageSize)
         {
-            try
-            {
-                var product = await productService.GetAllProductAsync();
-                if (product == null)
-                {
-                    return NotFound($"Product empty");
-                }
-
-                return Ok(product);
-            }
-            catch (Exception e)
-            {
-                return BadRequest(e.Message);
-            }
+            var products = await productService.GetAllProductAsync(page, pageSize);
+            if (products == null) return BadRequest();
+            return Ok(products);
 
         }
 
@@ -107,7 +98,7 @@ namespace Assignment.API.Controllers
 
                 if (productDetail == null)
                 {
-                    return NotFound();
+                    return NotFound($"Cannot find a product with Id: {productId}");
                 }
 
                 return Ok(productDetail);

@@ -31,7 +31,6 @@ namespace Assignment.API.Services
         public async Task<TokenResponse> LoginAsync(LoginRequest loginRequest)
         {
             var user = onlineshopDbContext.Users.SingleOrDefault(user => user.Active && user.Email == loginRequest.Email);
-
             if (user == null)
             {
                 return new TokenResponse
@@ -40,7 +39,8 @@ namespace Assignment.API.Services
                     Error = "Email not found"
                 };
             }
-            var passwordHash = PasswordHelper.HashUsingPbkdf2(loginRequest.Password, Convert.FromBase64String(user.PasswordSalt));
+            var salt = PasswordHelper.GetSecureSalt();
+            var passwordHash = PasswordHelper.HashUsingPbkdf2(loginRequest.Password, salt);
 
             if (user.Password != passwordHash)
             {
@@ -51,11 +51,13 @@ namespace Assignment.API.Services
                 };
             }
 
-            var token = await System.Threading.Tasks.Task.Run(() => tokenService.GenerateTokensAsync(user.Id));
+            var token = await Task.Run(() => tokenService.GenerateTokensAsync(user.Id));
 
             return new TokenResponse
             {
                 Success = true,
+                user = user.Email,
+                userId = user.Id,
                 AccessToken = token.Item1,
                 RefreshToken = token.Item2
             };
@@ -147,33 +149,5 @@ namespace Assignment.API.Services
 
         }
 
-        //update user config password hash
-        public async Task<string> UpdateUser(UpdateUserRequest request)
-        {
-            //    var user = await onlineshopDbContext.Users.AnyAsync(x => x.Email == request.Email && x.Id != request.Id);
-            //    if (user == true)
-            //    {
-            //        return "Tài khoản đã tồn tại";
-            //    }
-            //    var mail = await onlineshopDbContext.Users.AnyAsync(x => x.Email == request.Email && x.Id != request.Id);
-            //    if (mail == true)
-            //    {
-            //        return "Emai đã tồn tại";
-            //    }
-            //    var usr = await onlineshopDbContext.FindByIdAsync(request.Id.ToString());
-            //    usr.Name = request.UserName;
-            //    usr.Address = request.Address;
-            //    usr.Email = request.Email;
-            //    usr.PhoneNumber = request.PhoneNumber;
-
-
-            //    var result = await onlineshopDbContext.UpdateAsync(usr);
-            //    if (result.Succeeded)
-            //    {
-            //        return "Cap nhat thanh cong";
-            //    }
-            //    return "Cập nhật không thành công";
-            throw new NotImplementedException();
-        }
     }
 }

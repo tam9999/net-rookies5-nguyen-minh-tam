@@ -21,12 +21,16 @@ namespace Assignment.CustomerSite.Pages.Components.Category
             _product = RestService.For<IProduct>("https://localhost:5445");
             _home = new HomeViewModel();
         }
-
+        public int TotalItem { get; set; }
+        [BindProperty(SupportsGet = true)]
+        public int CurrentPage { get; set; } = 1;
+        public double NumberPage { get; set; }
+        public int? PageSize { get; set; } = 4;
         public async Task<IActionResult> OnGetAsync(int categoryId)
         {
             var categories = _category.GetAllCategoryAsync().GetAwaiter().GetResult();
             var categoryViewModel = await _category.GetCategoryDetailAsync(categoryId);
-            var products = _product.GetAllProductAsync().GetAwaiter().GetResult();
+            var products = _product.GetAllProductAsync(CurrentPage, PageSize).GetAwaiter().GetResult();
             _home.Products = products;
             _home.Categories = categories;
             _home.CategoryDetail = categoryViewModel;

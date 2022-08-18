@@ -21,6 +21,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Asignment.SharedViewModels\Assignment.SharedViewModels.csproj" />
+    <ProjectReference Include="..\Assignment.API\Assignment.API.csproj" />
   </ItemGroup>
 
 </Project>

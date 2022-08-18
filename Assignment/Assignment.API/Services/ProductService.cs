@@ -1,6 +1,7 @@
 ﻿using Assignment.API.Interfaces;
 using Assignment.Domain.Data;
 using Assignment.Domain.Entities;
+using Assignment.SharedViewModels.Dtos;
 using Assignment.SharedViewModels.Requests;
 using Assignment.SharedViewModels.ViewModels;
 using AutoMapper;
@@ -71,44 +72,35 @@ namespace Assignment.API.Services
 
         public async Task<ProductViewModel> GetProductDetailAsync(int? productId)
         {
-            if (db != null)
+            var product = await db.Products.Where(x => x.Id == productId).FirstOrDefaultAsync();
+            if (product == null)
             {
-                return await (from c in db.Categories
-                              from p in db.Products
-                              from r in db.ProductRatings
-                              where p.Id == productId
-                              select new ProductViewModel
-                              {
-                                  Id = p.Id,
-                                  Name = p.ProductName,
-                                  CategoryId = p.CategoryId,
-                                  CategoryName = c.CategoryName,
-                                  Image = p.Image,
-                                  Price = p.Price,
-                                  ProductRatingId = p.ProductRatingId,
-                                  Start = r.Start,
-                                  Description = p.Description,
-                                  Qty = p.Qty
-                              }).FirstOrDefaultAsync();
+                throw new Exception($"Cannot find product with Id = {productId}");
             }
-
-            return null;
+            var result = new ProductViewModel()
+            {
+                Id = product.Id,
+                Name = product.ProductName,
+                Price = product.Price,
+                Description = product.Description,
+                CreatedDate = product.CreatedDate,
+                UpdatedDate = product.UpdatedDate,
+                CategoryId = product.CategoryId,
+                Image = product.Image
+            };
+            return result;
         }
 
         public async Task<List<SearchProductViewModel>> SearchByNameAsync(string productName)
         {
-            //return await db.Products.Where(x => x.ProductName.Contains(productName)).Select(product => _mapper.Map<SearchProductViewModel>(product)).ToListAsync();
-            return await db.Products.Where(p => p.ProductName.Contains(productName) && p.IsDeleted == true).Select(product => new SearchProductViewModel()
+            IQueryable<Product> query = db.Products;
+            if (!string.IsNullOrEmpty(productName))
             {
-                Id = product.Id,
-                Name = product.ProductName,
-                CategoryId = product.CategoryId,
-                Image = product.Image,
-                Price = product.Price,
-                ProductRatingId = product.ProductRatingId,
-                Description = product.Description,
-                Qty = product.Qty,
-            }).ToListAsync();
+                query = query.Where(p => p.ProductName.Contains(productName));
+            }
+            var result = await query.ToListAsync();
+            var searchDto = _mapper.Map<List<SearchProductViewModel>>(result);
+            return searchDto;
         }
 
         public async Task<int> UpdateProductAsync(ProductUpdateRequest request)
@@ -153,21 +145,46 @@ namespace Assignment.API.Services
             return product.Id;
         }
 
-        public async Task<List<ProductViewModel>> GetAllProductAsync()
+        public async Task<ProductDto> GetAllProductAsync(int? page, int? pageSize)
         {
-            return await db.Products.Select(product => new ProductViewModel()
+            using (db)
             {
-                Id = product.Id,
-                Name = product.ProductName,
-                Qty = product.Qty,
-                Price = product.Price,
-                Description = product.Description,
-                CreatedDate = product.CreatedDate,
-                UpdatedDate = product.UpdatedDate,
-                CategoryId = product.CategoryId,
-                Image = product.Image,
-                ImageId = product.ImageId
-            }).ToListAsync();
+                var products = await db.Products.Include(c => c.Category)
+                                                 .Include(s => s.Images)
+                                                 .Include(r => r.ProductRatings)
+                                                 .ToListAsync();
+                if (products != null)
+                {
+                    var pageSizeCur = pageSize ?? 4;
+                    var pageIndex = page ?? 1;
+                    var totalPage = products.Count;
+                    var numberPage = Math.Ceiling((float)totalPage / pageSizeCur);
+                    var startPage = (pageIndex - 1) * pageSizeCur;
+                    products = products.Skip(startPage).Take(pageSizeCur).ToList();
+                    var ListProductsViewDto = _mapper.Map<List<ProductViewModel>>(products); 
+
+                    var productsDto = _mapper.Map<ProductDto>(ListProductsViewDto);
+                    productsDto.TotalItem = totalPage;
+                    productsDto.CurrentPage = pageIndex;
+                    productsDto.NumberPage = numberPage;
+                    productsDto.PageSize = pageSizeCur;
+                    return productsDto;
+                }
+            }
+            return null;
+            //return await db.Products.Select(product => new ProductViewModel()
+            //{
+            //    Id = product.Id,
+            //    Name = product.ProductName,
+            //    Qty = product.Qty,
+            //    Price = product.Price,
+            //    Description = product.Description,
+            //    CreatedDate = product.CreatedDate,
+            //    UpdatedDate = product.UpdatedDate,
+            //    CategoryId = product.CategoryId,
+            //    Image = product.Image,
+            //    ImageId = product.ImageId
+            //}).ToListAsync();
         }
 
         public async Task<ProductViewModel> GetProductByIdAsync(int? productId)

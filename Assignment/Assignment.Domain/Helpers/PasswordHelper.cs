@@ -12,7 +12,11 @@ namespace Assignment.Domain.Helpers
     {
         public static byte[] GetSecureSalt()
         {
-            return RandomNumberGenerator.GetBytes(32);
+            int numberSercuriry = 123456;
+            byte[] intBytes = BitConverter.GetBytes(numberSercuriry);
+            Array.Reverse(intBytes);
+            byte[] result = intBytes;
+            return result;
         }
         public static string HashUsingPbkdf2(string password, byte[] salt)
         {
