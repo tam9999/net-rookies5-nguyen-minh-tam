@@ -151,9 +151,9 @@
 						<div class="single-top-main">
 	   		<div class="col-md-5 single-top">
 	   		<div class="single-w3agile">
-							
-				<div id="picture-frame">
-					<img src="~/images/@Model._home.ProductDetail.Image" data-src="~/images/@Model._home.ProductDetail.Image" alt="" class="img-responsive"/>
+                        
+                        <div id="picture-frame">
+                            <img src="@Url.Content(string.Format("https://localhost:5445{0}", @Model._home.ProductDetail.Image))" data-src="@Url.Content(string.Format("https://localhost:5445{0}", @Model._home.ProductDetail.Image))" alt="" class="img-responsive" />
 				</div>
 
 		
@@ -275,7 +275,7 @@
 				        <div class="col-md-3 pro-1">
 					        <div class="col-m">
 							        <a href="#" data-toggle="modal" data-target="#@item.Id" class="offer-img">
-							        <img src="~/images/@item.Image" class="img-responsive" alt="">
+                                        <img src="@Url.Content(string.Format("https://localhost:5445{0}", @item.Image))" class="img-responsive" alt="">
 							        <div class="offer"><p><span>Offer</span></p></div>
 							        </a>
 							        <div class="mid-1">
@@ -384,7 +384,7 @@
                     <div class="modal-body modal-spa">
                         <div class="col-md-5 span-2">
                             <div class="item">
-                                <img src="~/images/@item.Image" class="img-responsive" alt="">
+                                <img src="@Url.Content(string.Format("https://localhost:5445{0}", @item.Image))" class="img-responsive" alt="">
                             </div>
                         </div>
                         <div class="col-md-7 span-1 ">

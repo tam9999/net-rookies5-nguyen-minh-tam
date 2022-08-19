@@ -21,23 +21,23 @@ namespace Assignment.CustomerSite.Pages.Components.Product
             _home = new HomeViewModel();
         }
 
-        //[BindProperty]
-        //public int TotalItem { get; set; }
-        //[BindProperty]
-        //public int CurrentPage { get; set; } = 1;
-        //[BindProperty]
-        //public double NumberPage { get; set; }
-        //[BindProperty]
-        //public int? PageSize { get; set; } = 4;
+        [BindProperty]
+        public int TotalItem { get; set; }
+        [BindProperty]
+        public int CurrentPage { get; set; } = 1;
+        [BindProperty]
+        public double NumberPage { get; set; }
+        [BindProperty]
+        public int? PageSize { get; set; } = 4;
 
         public async Task<IActionResult> OnGetAsync(string productName)
         {
             var categories = _category.GetAllCategoryAsync().GetAwaiter().GetResult();
-            //var products = _product.GetAllProductAsync(CurrentPage, PageSize).GetAwaiter().GetResult();
+            var products = _product.GetAllProductAsync(CurrentPage, PageSize).GetAwaiter().GetResult();
             //var productViewModel = await _product.GetProductDetailAsync(productId);
             var searchViewModel = await _product.SearchByNameAsync(productName);
             _home.Categories = categories;
-            //_home.Products = products;
+            _home.Products = products;
             _home.SearchProducts = searchViewModel;
             
             return Page();

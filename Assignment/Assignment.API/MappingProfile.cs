@@ -17,6 +17,8 @@ namespace Assignment.API
                 .ForMember(dest => dest.Id, o => o.Ignore())
                 .ForMember(dest => dest.IsDeleted, o => o.Ignore());
             CreateMap<Product, SearchProductViewModel>()
+                .ForMember(dest => dest.Name, o => o.MapFrom(src => src.ProductName))
+                .ForMember(dest => dest.CategoryName, o => o.MapFrom(src => src.Category.CategoryName))
                 .ReverseMap();
             CreateMap<List<ProductViewModel>, ProductDto>()
                 .ForMember(dest => dest.Products, o => o.MapFrom(src => src));
