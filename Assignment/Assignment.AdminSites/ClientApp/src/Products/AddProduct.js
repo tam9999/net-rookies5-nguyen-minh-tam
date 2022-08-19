@@ -19,18 +19,24 @@ constructor(props){
 }   
 
 AddProduct=()=>{  
-    debugger;
-    //them hinh => idimage
-    axios.post('https://localhost:5445/api/Product/AddProduct', {
-        categoryId:this.state.categoryId,
-        productName:this.state.productName,
-        description:this.state.description,
-        price:this.state.price,
-        qty:this.state.qty,
-        image:this.state.image,
-        imageId:'0',
+    const headers = {
+        'Content-Type': 'mutilpart/form-data',
+    }
+    var data = new FormData();
+    
+    data.append('categoryId', this.state.categoryId);
+    data.append('productName', this.state.productName);
+    data.append('description', this.state.description);
+    data.append('price', this.state.price);
+    data.append('qty', this.state.qty);
+    data.append('image', this.state.image);
+    data.append('imageId', 0);
+    console.log(data);
+    axios.post('https://localhost:5445/api/Product/AddProduct', 
+        data,
+        {headers: headers}
         
-    })  
+    )  
     .then(json => {  
         if(json.data.id !==''){  
         console.log(json.data.Status);  
@@ -57,7 +63,13 @@ componentDidMount =()=>{
 handleChange = (e)=> {  
 this.setState({[e.target.name]:e.target.value});
 }  
-
+handleFileUpdate = (e) => {
+    this.setState({[e.target.name]:e.target.files[0]});
+};
+// handlePagination = (pageNumber) => {
+//     // window.location.href will reload entire page
+//     router.push(`/?page=${pageNumber}`);
+// };
 render() {  
 return (  
     <Container className="App">  
@@ -107,7 +119,7 @@ return (
             <FormGroup row>  
             <Label for="image" sm={2}>Image</Label>  
             <Col sm={10}>  
-                <Input ref={this.input} type="file" name="image" onChange={this.handleChange} value={this.state.image}  />  
+                <Input type="file" name="image" onChange={this.handleFileUpdate}/>  
             </Col>  
             </FormGroup> 
         </Col>  
@@ -126,6 +138,21 @@ return (
             </FormGroup>  
         </Col>  
         </Form>  
+        {/* <div className="d-flex justify-content-center mt-5">
+        <Pagination
+            activePage={page}
+            itemsCountPerPage={resPerPageValue}
+            totalItemsCount={Count}
+            onChange={handlePagination}
+            nextPageText={"Next"}
+            prevPageText={"Prev"}
+            firstPageText={"First"}
+            lastPageText={"Last"}
+            // overwriting the style
+            itemClass="page-item"
+            linkClass="page-link"
+        />
+        </div> */}
     </Container>  
 );  
 }  

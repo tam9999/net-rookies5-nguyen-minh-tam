@@ -6,3 +6,7 @@ margin-top: 10px;
 color :black !important;    
 background-color: #b3beca!important    
 } 
+.img-responsive {
+    width: 30%;
+    height: auto;
+}

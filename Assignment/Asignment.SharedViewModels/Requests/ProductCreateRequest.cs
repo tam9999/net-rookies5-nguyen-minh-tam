@@ -19,9 +19,10 @@ namespace Assignment.SharedViewModels.Requests
         public int Price { get; set; }       
         [Required]
         public int Qty { get; set; }
-        public string Image { get; set; }
+        //public string Image { get; set; }
         public DateTime CreatedDate { get; set; }
         public DateTime UpdatedDate { get; set; }
         public int? ImageId { get; set; }
+        public IFormFile Image { get; set; }
     }
 }

@@ -111,7 +111,8 @@ namespace Assignment.API.Controllers
 
         [HttpPost]
         [Route("AddProduct")]
-        public async Task<IActionResult> AddProductAsync([FromBody] ProductCreateRequest request)
+        [Consumes("multipart/form-data")]
+        public async Task<IActionResult> AddProductAsync([FromForm] ProductCreateRequest request)
         {
             try
             {

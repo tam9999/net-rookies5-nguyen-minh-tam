@@ -2,11 +2,16 @@ import React, { Component } from 'react';
 import axios from 'axios';  
 import { Link } from 'react-router-dom'; 
 import { Alert } from 'reactstrap';  
+import '../App.css';
+
+const baseUrl = 'https://localhost:5445'; 
 class Table extends Component {  
+
 constructor(props) {  
     super(props);  
+    
     }  
-
+    
     DeleteProduct= () =>{  
         axios.delete('https://localhost:5445/api/Product/DeleteProduct?ProductId='+this.props.obj.id)  
         .then(json => {  
@@ -38,7 +43,7 @@ constructor(props) {
                 {this.props.obj.description}  
             </td>  
             <td>  
-                {this.props.obj.image}  
+                <img className='img-responsive' alt={this.props.obj.name} src={baseUrl+this.props.obj.image}></img>  
             </td> 
             <td>  
                 {this.props.obj.createdDate}  

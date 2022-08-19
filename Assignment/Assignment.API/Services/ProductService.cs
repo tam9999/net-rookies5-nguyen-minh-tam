@@ -6,17 +6,21 @@ using Assignment.SharedViewModels.Requests;
 using Assignment.SharedViewModels.ViewModels;
 using AutoMapper;
 using Microsoft.EntityFrameworkCore;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace Assignment.API.Services
 {
+    
     public class ProductService : IProductService
     {
+        public static IWebHostEnvironment _webHostEnvironemnet;
         ApplicationDbContext db;
         private readonly IMapper _mapper;
-        public ProductService(ApplicationDbContext _db, IMapper mapper)
+        public ProductService(ApplicationDbContext _db, IMapper mapper, IWebHostEnvironment webHostEnvironemnet)
         {
             this.db = _db;
             _mapper = mapper;
+            _webHostEnvironemnet = webHostEnvironemnet;
         }
         //public async Task<int> AddProductAsync(Product product)
         //{
@@ -133,13 +137,27 @@ namespace Assignment.API.Services
                 ProductName = request.ProductName,
                 Price = request.Price,
                 Qty = request.Qty,
-                Image = request.Image,
-                ImageId = request.ImageId,
                 Description = request.Description,
                 CategoryId = request.CategoryId,
                 CreatedDate = DateTime.Now,
-                UpdatedDate = DateTime.Now
+                UpdatedDate = DateTime.Now,
+                ImageId = request.ImageId,
             };
+            if (request.Image != null)
+            {
+                string path = _webHostEnvironemnet.WebRootPath + "\\uploads\\";
+                if (!Directory.Exists(path))
+                {
+                    Directory.CreateDirectory(path);
+                }
+                using (FileStream fileStream = System.IO.File.Create(path + request.Image.FileName))
+                {
+                    request.Image.CopyTo(fileStream);
+                    fileStream.Flush();
+                }
+                product.Image = "/uploads/" + request.Image.FileName;
+            }
+            
             await db.AddAsync(product);
             await db.SaveChangesAsync();
             return product.Id;
