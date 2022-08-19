@@ -43,7 +43,9 @@ namespace Assignment.API.Services
 
                 if (product != null)
                 {
-                    db.Products.Remove(product);
+                    //db.Products.Remove(product);
+                    product.IsDeleted = true;
+                    db.Products.Update(product);
                     result = await db.SaveChangesAsync();
                 }
                 return result;
@@ -167,7 +169,7 @@ namespace Assignment.API.Services
         {
             using (db)
             {
-                var products = await db.Products.Include(c => c.Category)
+                var products = await db.Products.Where(x => x.IsDeleted != true).Include(c => c.Category)
                                                  .Include(s => s.Images)
                                                  .Include(r => r.ProductRatings)
                                                  .ToListAsync();

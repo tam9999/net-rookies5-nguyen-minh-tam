@@ -1,4 +1,6 @@
-﻿namespace Assignment.API.Responses
+﻿using Assignment.Domain.Entities;
+
+namespace Assignment.API.Responses
 {
     public class TokenResponse : BaseResponse
     {
